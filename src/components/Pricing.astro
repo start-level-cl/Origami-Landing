@@ -7,7 +7,7 @@ import { siteConfig } from '../config/site.config';
 <section
   id="precios"
   aria-labelledby="pricing-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
+  class="pricing-section scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -29,17 +29,18 @@ import { siteConfig } from '../config/site.config';
     </div>
 
     <!-- Grid de Opciones de Precios con Fichas de Papel -->
-    <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="pricing-composition mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {pricingData.map((plan) => {
         const planWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(`Hola Origami, me gustaría consultar por la opción "${plan.name}".`)}`;
         
         return (
           <div
-            class={`paper-sheet p-6 flex flex-col justify-between relative transition-all ${
+            class={`pricing-sheet paper-sheet p-6 flex flex-col justify-between relative transition-all ${
               plan.isPopular
-                ? 'border-2 border-origami-terracotta-600 bg-origami-surface-sheet shadow-paper-lift -translate-y-1'
+                ? 'folded-sheet bg-origami-surface-sheet'
                 : 'paper-sheet-hover bg-origami-surface-sheet'
             }`}
+            data-popular={plan.isPopular ? 'true' : 'false'}
           >
             
             {plan.isPopular && (
@@ -49,7 +50,7 @@ import { siteConfig } from '../config/site.config';
               </div>
             )}
 
-            <div>
+            <div class="pricing-content">
               {!plan.isPopular && plan.badge && (
                 <div class="fold-tag fold-tag-neutral mb-3">
                   {plan.badge}
@@ -91,7 +92,7 @@ import { siteConfig } from '../config/site.config';
                 rel="noopener noreferrer"
                 class={`w-full inline-flex items-center justify-center gap-2 py-3 px-4 text-xs sm:text-sm font-bold transition-all shadow-paper-flat ${
                   plan.isPopular
-                    ? 'bg-origami-ink-900 text-white hover:bg-origami-ink-800 shadow-paper-lift'
+                    ? 'bg-origami-ink-900 text-white hover:bg-origami-ink-800'
                     : 'bg-origami-surface-warm text-origami-ink-900 hover:bg-origami-surface-base border border-origami-crease-line'
                 }`}
               >

@@ -22,7 +22,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 <section
   id="proceso"
   aria-labelledby="process-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
+  class="process-section scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -44,11 +44,11 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
     </div>
 
     <!-- Grid de 4 Pasos con Estilo de Fichas de Papel -->
-    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {processSteps.map((step) => {
+    <div class="process-composition mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {processSteps.map((step, index) => {
         const IconComponent = getProcessIcon(step.iconName);
         return (
-          <div class="paper-sheet paper-sheet-hover p-6 flex flex-col justify-between group">
+          <div class={`process-step paper-sheet paper-sheet-hover p-6 flex flex-col justify-between group process-step-${index + 1}`}>
             
             <div>
               <div class="flex items-center justify-between mb-4">

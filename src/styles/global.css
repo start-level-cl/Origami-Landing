@@ -2,59 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --origami-table: #f6f4ef;
+  --origami-paper: #fffefa;
+  --origami-paper-warm: #ece8de;
+  --origami-paper-muted: #e5e1d6;
+  --origami-paper-edge: #d8d2c4;
+  --origami-crease: #c8c2b3;
+  --origami-crease-light: rgba(255, 255, 255, 0.92);
+  --origami-crease-shadow: rgba(75, 67, 55, 0.18);
+  --origami-fold-light: #f8f5ee;
+  --origami-fold-shadow: #d7d0c2;
+  --origami-fold-size: 2.25rem;
+  --origami-layer-offset: 0.45rem;
+  --origami-ink: #1b1e23;
+  --origami-paper-shadow: 1px 1px 0 var(--origami-paper-edge), 4px 6px 13px -7px rgba(27, 30, 35, 0.34);
+  --origami-paper-shadow-lifted: 2px 2px 0 var(--origami-crease), 7px 11px 18px -9px rgba(27, 30, 35, 0.42);
+  --origami-paper-shadow-contact: 1px 2px 0 rgba(75, 67, 55, 0.18);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 4.5rem; /* Compensación para header sticky en móvil (64px + 8px de respiro) */
+    scroll-padding-top: 4.5rem;
     color-scheme: light;
   }
 
   @media (min-width: 640px) {
     html {
-      scroll-padding-top: 5.5rem; /* Compensación para header sticky en sm/desktop (80px + 8px de respiro) */
+      scroll-padding-top: 5.5rem;
     }
   }
 
   body {
     @apply antialiased text-origami-ink-900 bg-origami-surface-base;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: var(--origami-table);
   }
 
-  /* Mejora de accesibilidad para foco de navegación por teclado WCAG AA */
   :focus-visible {
     @apply outline-none ring-2 ring-origami-terracotta-600 ring-offset-2 ring-offset-origami-surface-base;
   }
 }
 
 @layer components {
-  /* Pliego de papel estándar (Superficie Frontal Z1) */
+  /* A small set of reusable paper primitives. All shadows follow the same
+     top-left light source and use contact shadows instead of soft UI glows. */
   .paper-sheet {
-    @apply bg-origami-surface-sheet border border-origami-crease-line shadow-paper-sheet transition-all duration-200;
+    @apply relative border border-origami-crease-line transition-[transform,box-shadow,border-color] duration-200;
+    background: var(--origami-paper);
+    box-shadow: var(--origami-paper-shadow);
+    isolation: isolate;
   }
 
-  /* Microinteracción de elevación táctil (Z2 en hover) */
-  .paper-sheet-hover {
-    @apply hover:shadow-paper-lift hover:-translate-y-0.5 hover:border-origami-crease-dark;
+  .paper-sheet-hover:hover {
+    @apply border-origami-crease-dark;
+    box-shadow: var(--origami-paper-shadow-lifted);
+    transform: translate(-1px, -2px);
   }
 
-  /* Pliego reposado secundario (Z0 / Inset) */
-  .paper-sheet-warm {
-    @apply bg-origami-surface-warm border border-origami-crease-line;
+  .paper-layer {
+    @apply relative border border-origami-crease-line;
+    background: var(--origami-paper);
+    box-shadow: var(--origami-paper-shadow-contact);
+    isolation: isolate;
   }
 
-  /* Línea de pliegue y hendidura */
+  .paper-stack {
+    @apply relative;
+    isolation: isolate;
+  }
+
+  .paper-stack::before,
+  .paper-stack::after {
+    content: '';
+    position: absolute;
+    inset: var(--origami-layer-offset) calc(var(--origami-layer-offset) * -1) calc(var(--origami-layer-offset) * -1) var(--origami-layer-offset);
+    border: 1px solid var(--origami-paper-edge);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .paper-stack::before {
+    background: var(--origami-paper-warm);
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .paper-stack::after {
+    inset: calc(var(--origami-layer-offset) * 2) calc(var(--origami-layer-offset) * -2) calc(var(--origami-layer-offset) * -2) calc(var(--origami-layer-offset) * 2);
+    background: var(--origami-paper-muted);
+    z-index: -2;
+  }
+
+  .folded-sheet {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .folded-sheet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--origami-fold-size);
+    height: var(--origami-fold-size);
+    background: linear-gradient(135deg, transparent 0 48%, var(--origami-fold-light) 49% 53%, var(--origami-fold-shadow) 54% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    box-shadow: -2px 3px 0 var(--origami-crease-shadow);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .folded-sheet::after {
+    content: '';
+    position: absolute;
+    top: var(--origami-fold-size);
+    right: 0;
+    width: var(--origami-fold-size);
+    height: 1px;
+    background: var(--origami-crease-shadow);
+    transform: rotate(-45deg);
+    transform-origin: right center;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  .fold-facet {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .fold-facet::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--origami-crease), transparent);
+    box-shadow: 1px 0 0 var(--origami-crease-light);
+    pointer-events: none;
+  }
+
   .crease-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #DDD8CB 20%, #DDD8CB 80%, transparent 100%);
+    background: linear-gradient(90deg, transparent, var(--origami-crease) 18%, var(--origami-crease) 82%, transparent);
   }
 
-  /* Hendidura doble tipo pliegue monte (Mountain Crease) */
   .crease-mountain {
-    border-top: 1px solid #FFFFFF;
-    border-bottom: 1px solid #DDD8CB;
+    border-top: 1px solid var(--origami-crease-light);
+    border-bottom: 1px solid var(--origami-crease);
   }
 
-  /* Etiquetas de taller con estilo de pliego técnico */
   .fold-tag {
     @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-bold tracking-wider uppercase;
   }
@@ -71,21 +170,593 @@
     @apply bg-origami-surface-warm text-origami-ink-700 border border-origami-crease-line;
   }
 
-  /* Chaflán angular en 45 grados (Corte en inglete) */
   .fold-notch-tr {
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
   }
+
+  /* Hero: the copy and artwork are two sheets crossing the same work table. */
+  .hero-section {
+    background: var(--origami-table);
+  }
+
+  .hero-fold-map {
+    background: none;
+    opacity: 0.65;
+  }
+
+  .hero-fold-map::before,
+  .hero-fold-map::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .hero-fold-map::before {
+    left: 5%;
+    top: 58%;
+    width: 54%;
+    background: linear-gradient(90deg, transparent, var(--origami-crease) 14%, var(--origami-crease) 76%, transparent);
+    transform: rotate(24deg);
+    transform-origin: left center;
+  }
+
+  .hero-fold-map::after {
+    right: 5%;
+    top: 25%;
+    width: 31%;
+    background: linear-gradient(90deg, transparent, var(--origami-crease-light) 20%, var(--origami-crease) 78%, transparent);
+    transform: rotate(-36deg);
+    transform-origin: right center;
+  }
+
+  .hero-composition {
+    position: relative;
+  }
+
+  .hero-copy-sheet {
+    @apply relative;
+    padding: 1.25rem;
+    background: var(--origami-paper);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow);
+    isolation: isolate;
+  }
+
+  .hero-copy-sheet::before {
+    content: '';
+    position: absolute;
+    inset: 0.55rem -0.55rem -0.55rem 0.55rem;
+    background: var(--origami-paper-warm);
+    border: 1px solid var(--origami-paper-edge);
+    z-index: -1;
+  }
+
+  .hero-copy-sheet::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: linear-gradient(135deg, transparent 0 49%, var(--origami-fold-light) 50% 54%, var(--origami-fold-shadow) 55% 100%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero-copy-sheet > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-visual-sheet {
+    @apply relative;
+    isolation: isolate;
+  }
+
+  .hero-visual-sheet::before,
+  .hero-visual-sheet::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--origami-paper-edge);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hero-visual-sheet::before {
+    inset: 0.9rem -0.9rem -0.9rem 0.9rem;
+    background: var(--origami-paper-muted);
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .hero-visual-sheet::after {
+    inset: 0.45rem -0.45rem -0.45rem 0.45rem;
+    background: var(--origami-paper-warm);
+  }
+
+  .hero-art-card {
+    transform: rotate(1deg);
+  }
+
+  .hero-image-sheet {
+    box-shadow: inset 1px 1px 0 var(--origami-crease-light), var(--origami-paper-shadow-contact);
+  }
+
+  .hero-proof-strip {
+    position: relative;
+  }
+
+  .hero-proof-sheet {
+    @apply relative;
+    background: var(--origami-paper-warm);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .hero-proof-sheet:nth-child(2) {
+    transform: translateY(0.35rem);
+  }
+
+  .hero-proof-sheet:nth-child(3) {
+    transform: translateY(-0.2rem);
+  }
+
+  /* About: one unfolded sheet with internal crease lines instead of four cards. */
+  .about-section {
+    background: var(--origami-table);
+  }
+
+  .about-spread {
+    @apply relative;
+    padding: 1rem;
+    background: var(--origami-paper-warm);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow);
+    isolation: isolate;
+  }
+
+  .about-spread::before {
+    content: '';
+    position: absolute;
+    inset: 0.65rem -0.65rem -0.65rem 0.65rem;
+    background: var(--origami-paper-muted);
+    border: 1px solid var(--origami-paper-edge);
+    z-index: -1;
+  }
+
+  .about-spread::after {
+    content: '';
+    position: absolute;
+    inset: 50% 1rem auto 1rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--origami-crease) 18%, var(--origami-crease) 82%, transparent);
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .about-story {
+    @apply relative;
+    padding: 1rem;
+    background: var(--origami-paper);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .about-pillar-grid {
+    position: relative;
+    padding: 0.75rem;
+  }
+
+  .about-pillar-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0.75rem 50% 0.75rem auto;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--origami-crease), transparent);
+    pointer-events: none;
+  }
+
+  .about-pillar {
+    box-shadow: none;
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .about-pillar:hover {
+    box-shadow: var(--origami-paper-shadow-contact);
+    background: rgba(255, 254, 250, 0.62);
+  }
+
+  /* Services: a collection surface holds four individual workshop sheets. */
+  .services-section,
+  .gallery-section,
+  .faq-section {
+    background: var(--origami-paper);
+  }
+
+  .services-composition,
+  .gallery-composition,
+  .pricing-composition {
+    position: relative;
+    align-items: start;
+    isolation: isolate;
+  }
+
+  .services-composition,
+  .gallery-composition,
+  .pricing-composition {
+    padding: 1rem 0.75rem 1.5rem;
+  }
+
+  .services-composition::before,
+  .gallery-composition::before,
+  .pricing-composition::before {
+    content: '';
+    position: absolute;
+    inset: 0.7rem 0.25rem 0.2rem;
+    background: var(--origami-paper-warm);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+    z-index: -1;
+  }
+
+  .services-composition::after {
+    content: '';
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--origami-crease) 16%, var(--origami-crease) 84%, transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .service-sheet,
+  .gallery-sample,
+  .pricing-sheet {
+    box-shadow: var(--origami-paper-shadow);
+    z-index: 1;
+  }
+
+  .service-sheet {
+    isolation: isolate;
+  }
+
+  .service-sheet::before {
+    content: '';
+    position: absolute;
+    top: 0.8rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 0.35rem;
+    background: var(--origami-paper-muted);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+    pointer-events: none;
+  }
+
+  .service-sheet:nth-child(2)::before {
+    top: auto;
+    right: auto;
+    bottom: 1.1rem;
+    left: 1.5rem;
+    background: var(--origami-paper-warm);
+  }
+
+  .service-sheet:nth-child(3)::before {
+    right: auto;
+    left: 1.5rem;
+    width: 2.25rem;
+    background: var(--origami-fold-light);
+  }
+
+  .service-sheet:nth-child(4)::before {
+    display: none;
+  }
+
+  .service-sheet:nth-child(2) {
+    transform: translate(0.35rem, 1rem);
+  }
+
+  .service-sheet:nth-child(3) {
+    transform: translateY(-0.35rem);
+  }
+
+  .service-sheet:nth-child(4) {
+    transform: translate(0.65rem, 0.65rem);
+  }
+
+  .service-sheet:hover {
+    transform: translateY(-0.3rem);
+  }
+
+  .service-sheet:nth-child(2):hover,
+  .service-sheet:nth-child(4):hover {
+    transform: translate(0.35rem, 0.4rem);
+  }
+
+  /* Process: four regions belong to one continuous folded work sheet. */
+  .process-section,
+  .pricing-section,
+  .contact-section {
+    background: var(--origami-table);
+  }
+
+  .process-composition {
+    position: relative;
+    padding: 2.75rem 1rem 1.5rem;
+    background: var(--origami-paper-warm);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow);
+    isolation: isolate;
+  }
+
+  .process-composition::before {
+    content: '';
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 2.3rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--origami-crease) 8%, var(--origami-crease) 92%, transparent);
+    box-shadow: 0 1px 0 var(--origami-crease-light);
+    pointer-events: none;
+  }
+
+  .process-step {
+    @apply relative;
+    min-height: 100%;
+    background: rgba(255, 254, 250, 0.66);
+    border-color: transparent;
+    box-shadow: none;
+    z-index: 1;
+  }
+
+  .process-step::after {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--origami-crease), transparent);
+    pointer-events: none;
+  }
+
+  .process-step:nth-child(2),
+  .process-step:nth-child(4) {
+    transform: translateY(1rem);
+  }
+
+  .process-step:hover {
+    transform: translateY(-0.2rem);
+    background: var(--origami-paper);
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .process-step:nth-child(2):hover,
+  .process-step:nth-child(4):hover {
+    transform: translateY(0.65rem);
+  }
+
+  /* Gallery: mounted samples sit on one shared display sheet. */
+  .gallery-sample {
+    isolation: isolate;
+  }
+
+  .gallery-sample:nth-child(1)::before,
+  .gallery-sample:nth-child(4)::before {
+    content: '';
+    position: absolute;
+    inset: 0.55rem -0.55rem -0.55rem 0.55rem;
+    background: var(--origami-paper-muted);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+    z-index: -1;
+  }
+
+  .gallery-sample:nth-child(2)::after,
+  .gallery-sample:nth-child(5)::after {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    right: -0.35rem;
+    width: 2.5rem;
+    height: 1.1rem;
+    background: var(--origami-paper-warm);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .gallery-mount {
+    margin: 0.7rem 0.7rem 0;
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: inset 1px 1px 0 var(--origami-crease-light), var(--origami-paper-shadow-contact);
+  }
+
+  .gallery-sample:nth-child(2) .gallery-mount {
+    margin-top: 1.2rem;
+    margin-left: 1.1rem;
+  }
+
+  .gallery-sample:nth-child(3) .gallery-mount {
+    margin-right: 1.1rem;
+  }
+
+  .gallery-sample:nth-child(5) .gallery-mount {
+    margin-top: 0.4rem;
+    margin-right: 1.1rem;
+  }
+
+  .gallery-sample:nth-child(6) .gallery-mount {
+    margin-left: 1.1rem;
+  }
+
+  .gallery-sample:nth-child(2),
+  .gallery-sample:nth-child(5) {
+    transform: translateY(0.8rem);
+  }
+
+  .gallery-sample:nth-child(3) {
+    transform: translateY(-0.3rem);
+  }
+
+  .gallery-sample:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--origami-paper-shadow-lifted);
+  }
+
+  .gallery-sample:nth-child(2):hover,
+  .gallery-sample:nth-child(5):hover {
+    transform: translateY(0.45rem);
+  }
+
+  /* Pricing: four documents share a work surface but sit at different levels. */
+  .pricing-composition::after {
+    content: '';
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 0.8rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--origami-crease), transparent);
+    box-shadow: 0 1px 0 var(--origami-crease-light);
+    pointer-events: none;
+  }
+
+  .pricing-sheet {
+    min-height: 100%;
+    isolation: isolate;
+  }
+
+  .pricing-sheet:not([data-popular='true'])::before {
+    content: '';
+    position: absolute;
+    inset: 0.45rem -0.35rem -0.35rem 0.35rem;
+    background: var(--origami-paper-muted);
+    border: 1px solid var(--origami-paper-edge);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .pricing-sheet[data-popular='true'] {
+    z-index: 3;
+    overflow: visible;
+  }
+  .pricing-sheet:nth-child(1) {
+    transform: translateY(0.8rem);
+  }
+
+  .pricing-sheet:nth-child(3) {
+    transform: translateY(0.35rem);
+  }
+
+  .pricing-sheet:nth-child(4) {
+    transform: translateY(1rem);
+  }
+
+  .pricing-sheet[data-popular='true'] {
+    transform: translateY(1rem);
+    box-shadow: var(--origami-paper-shadow-lifted);
+  }
+
+  .pricing-sheet[data-popular='true'] .pricing-content {
+    padding-top: 1.75rem;
+  }
+
+  /* FAQ: the trigger is a top sheet and the answer is inserted underneath. */
+  .faq-section .faq-item {
+    background: var(--origami-paper-warm);
+    border-color: var(--origami-paper-edge);
+    box-shadow: none;
+  }
+
+  .faq-section .faq-item.is-open {
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .faq-section .faq-trigger {
+    background: var(--origami-paper);
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .faq-section .faq-item.is-open .faq-trigger {
+    box-shadow: var(--origami-paper-shadow-lifted);
+  }
+
+  .faq-answer-sheet {
+    margin: 0.55rem 0.75rem 0.75rem;
+    border: 1px solid var(--origami-paper-edge);
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .faq-section .faq-content-wrapper {
+    position: relative;
+  }
+
+  .faq-section .faq-content-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--origami-crease), transparent);
+    pointer-events: none;
+  }
+
+  /* Contact: the form is a letter sheet and the map is a separate board insert. */
+  .contact-info-sheet {
+    box-shadow: var(--origami-paper-shadow-contact);
+  }
+
+  .order-letter {
+    box-shadow: var(--origami-paper-shadow-lifted);
+  }
+
+  .map-sheet {
+    box-shadow: var(--origami-paper-shadow);
+  }
+
+  .footer-sheet {
+    background: var(--origami-ink);
+  }
+
+  .navbar-sheet {
+    box-shadow: 0 2px 0 var(--origami-crease-light), 0 4px 12px -10px rgba(27, 30, 35, 0.45);
+  }
+
+  .whatsapp-sheet {
+    box-shadow: 2px 3px 0 rgba(15, 36, 28, 0.35), 5px 8px 15px -8px rgba(15, 36, 28, 0.55);
+  }
+
+  .about-section,
+  .services-section,
+  .process-section,
+  .gallery-section,
+  .pricing-section,
+  .faq-section,
+  .contact-section {
+    overflow-x: clip;
+  }
 }
 
-/* Animación fluida para acordeón FAQ */
-.faq-content-wrapper {
+/* Fluid unfolding for the existing accessible FAQ and mobile navigation. */
+.faq-content-wrapper,
+.mobile-menu-wrapper {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms ease;
+  transition: grid-template-rows 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 250ms ease;
 }
 
-.faq-item.is-open .faq-content-wrapper {
+.faq-item.is-open .faq-content-wrapper,
+.mobile-menu-wrapper.is-open {
   grid-template-rows: 1fr;
   opacity: 1;
 }
@@ -94,20 +765,6 @@
   transform: rotate(180deg);
 }
 
-/* Animación fluida para menú móvil y botón hamburguesa */
-.mobile-menu-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms ease;
-}
-
-.mobile-menu-wrapper.is-open {
-  grid-template-rows: 1fr;
-  opacity: 1;
-}
-
-/* Transformación de botón hamburguesa a X */
 .menu-open .hamburger-line-1 {
   transform: translateY(7px) rotate(45deg);
 }
@@ -119,4 +776,172 @@
 
 .menu-open .hamburger-line-3 {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 640px) {
+  .hero-copy-sheet,
+  .about-spread {
+    padding: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-copy-sheet {
+    padding: 2.1rem 2.25rem;
+    transform: translateY(-0.5rem);
+  }
+
+  .hero-visual-sheet {
+    transform: translate(0.5rem, 1.2rem);
+  }
+
+  .about-spread {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .process-composition::before {
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 1.25rem;
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, transparent, var(--origami-crease) 8%, var(--origami-crease) 92%, transparent);
+  }
+
+  .process-step,
+  .process-step:nth-child(2),
+  .process-step:nth-child(4) {
+    transform: translateX(0.5rem);
+  }
+
+  .process-step:hover,
+  .process-step:nth-child(2):hover,
+  .process-step:nth-child(4):hover {
+    transform: translate(0.5rem, -0.15rem);
+  }
+
+  .about-spread::after {
+    top: 36%;
+  }
+
+  .about-pillar-grid::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .services-composition .service-sheet:nth-child(2) {
+    margin-left: 0.35rem;
+  }
+
+  .services-composition .service-sheet:nth-child(3) {
+    margin-right: 0.35rem;
+  }
+
+  .services-composition .service-sheet:nth-child(4) {
+    margin-left: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-composition .gallery-sample:nth-child(4) {
+    transform: translate(-0.75rem, 0.2rem);
+  }
+
+  .gallery-composition .gallery-sample:nth-child(5) {
+    transform: translateY(-0.35rem);
+  }
+
+  .gallery-composition .gallery-sample:nth-child(6) {
+    transform: translate(0.75rem, 0.55rem);
+  }
+
+  .pricing-composition .pricing-sheet[data-popular='true'] {
+    padding-top: 1.9rem;
+    padding-bottom: 1.9rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-fold-map::before {
+    left: -5%;
+    top: 64%;
+    width: 70%;
+  }
+
+  .hero-fold-map::after {
+    right: -8%;
+    top: 29%;
+    width: 55%;
+  }
+
+  .services-composition,
+  .gallery-composition,
+  .pricing-composition {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+
+  .services-composition .service-sheet:nth-child(2),
+  .services-composition .service-sheet:nth-child(4) {
+    margin-left: 0.45rem;
+  }
+
+  .services-composition .service-sheet:nth-child(3) {
+    margin-right: 0.35rem;
+  }
+
+  .process-composition {
+    padding: 2.25rem 0.65rem 1rem;
+  }
+
+  .process-step,
+  .process-step:nth-child(2),
+  .process-step:nth-child(4) {
+    transform: translateX(0.35rem);
+  }
+
+  .gallery-mount {
+    margin-left: 0.55rem;
+    margin-right: 0.55rem;
+  }
+
+  .gallery-sample:nth-child(2) .gallery-mount,
+  .gallery-sample:nth-child(5) .gallery-mount {
+    margin-left: 0.9rem;
+  }
+
+  .gallery-sample:nth-child(3) .gallery-mount,
+  .gallery-sample:nth-child(5) .gallery-mount {
+    margin-right: 0.9rem;
+  }
+
+  .pricing-composition .pricing-sheet:nth-child(1),
+  .pricing-composition .pricing-sheet:nth-child(3),
+  .pricing-composition .pricing-sheet:nth-child(4) {
+    margin-left: 0.35rem;
+    margin-right: 0.2rem;
+  }
+
+  .pricing-composition .pricing-sheet[data-popular='true'] {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
 }

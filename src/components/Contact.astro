@@ -8,14 +8,14 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
 <section
   id="contacto"
   aria-labelledby="contact-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
+  class="contact-section scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       
       <!-- Información de Contacto y Ubicación -->
-      <div class="lg:col-span-5 flex flex-col justify-between">
+      <div class="contact-story lg:col-span-5 flex flex-col justify-between">
         <div>
           <div class="fold-tag fold-tag-terracotta mb-4">
             <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
@@ -41,7 +41,7 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
               href={directWhatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="paper-sheet flex items-center gap-4 p-4 bg-origami-forest-50 border border-origami-forest-200 hover:bg-origami-forest-100 transition-all group shadow-paper-flat"
+              class="contact-info-sheet paper-sheet flex items-center gap-4 p-4 bg-origami-forest-50 border border-origami-forest-200 hover:bg-origami-forest-100 transition-all group shadow-paper-flat"
             >
               <div class="w-12 h-12 bg-origami-forest-700 text-white flex items-center justify-center shrink-0 shadow-xs">
                 <MessageCircle class="w-6 h-6" />
@@ -56,7 +56,7 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
             </a>
 
             <!-- Ubicación Física -->
-            <div class="paper-sheet flex items-start gap-4 p-4 bg-origami-surface-sheet border border-origami-crease-line shadow-paper-flat">
+            <div class="contact-info-sheet paper-sheet flex items-start gap-4 p-4 bg-origami-surface-sheet border border-origami-crease-line shadow-paper-flat">
               <div class="w-12 h-12 bg-origami-surface-warm text-origami-terracotta-700 flex items-center justify-center shrink-0 border border-origami-crease-line">
                 <MapPin class="w-6 h-6" />
               </div>
@@ -72,7 +72,7 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
             </div>
 
             <!-- Horarios de Atención -->
-            <div class="paper-sheet flex items-start gap-4 p-4 bg-origami-surface-sheet border border-origami-crease-line shadow-paper-flat">
+            <div class="contact-info-sheet paper-sheet flex items-start gap-4 p-4 bg-origami-surface-sheet border border-origami-crease-line shadow-paper-flat">
               <div class="w-12 h-12 bg-origami-surface-warm text-origami-ink-700 flex items-center justify-center shrink-0 border border-origami-crease-line">
                 <Clock class="w-6 h-6 text-origami-terracotta-600" />
               </div>
@@ -108,7 +108,7 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
 
       <!-- Formulario de Pedido Funcional con Estilo Carta de Taller -->
       <div class="lg:col-span-7">
-        <div class="bg-origami-surface-sheet p-6 sm:p-10 border border-origami-crease-line shadow-paper-sheet relative fold-notch-tr">
+        <div class="order-letter folded-sheet bg-origami-surface-sheet p-6 sm:p-10 border border-origami-crease-line relative fold-notch-tr">
           
           <div class="mb-6">
             <div class="fold-tag fold-tag-terracotta">
@@ -232,7 +232,7 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
     </div>
 
     <!-- Bloque de Mapa Interactivo y Ubicación en Santiago -->
-    <div class="mt-16 bg-origami-surface-sheet p-6 sm:p-8 border border-origami-crease-line shadow-paper-sheet relative overflow-hidden">
+    <div class="map-sheet paper-stack mt-16 bg-origami-surface-sheet p-6 sm:p-8 border border-origami-crease-line relative">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-origami-crease-line">
         <div>
           <div class="fold-tag fold-tag-terracotta mb-1.5">

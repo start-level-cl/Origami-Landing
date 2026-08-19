@@ -9,7 +9,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 <section
   id="faq"
   aria-labelledby="faq-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
+  class="faq-section scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -34,7 +34,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
     <div class="space-y-3.5" id="faq-accordion-container">
       {faqData.map((faq, index) => (
         <div
-          class={`faq-item group paper-sheet transition-all duration-200 overflow-hidden hover:border-origami-terracotta-400 ${index === 0 ? 'is-open' : ''}`}
+          class={`faq-item faq-sheet group paper-sheet transition-all duration-200 overflow-hidden hover:border-origami-terracotta-400 ${index === 0 ? 'is-open' : ''}`}
         >
           <button
             type="button"
@@ -57,7 +57,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
             class="faq-content-wrapper"
           >
             <div class="overflow-hidden">
-              <div class="px-6 pb-6 pt-3 text-sm sm:text-base text-origami-ink-600 leading-relaxed border-t border-origami-crease-line bg-origami-surface-warm/40">
+              <div class="faq-answer-sheet px-6 pb-6 pt-3 text-sm sm:text-base text-origami-ink-600 leading-relaxed bg-origami-surface-warm/40">
                 {faq.answer}
               </div>
             </div>

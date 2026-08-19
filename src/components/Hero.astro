@@ -8,16 +8,16 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 <section
   id="inicio"
   aria-labelledby="hero-heading"
-  class="relative overflow-hidden py-16 sm:py-24 lg:py-28 bg-origami-surface-base border-b border-origami-crease-line"
+  class="hero-section relative overflow-hidden py-16 sm:py-24 lg:py-28 bg-origami-surface-base border-b border-origami-crease-line"
 >
   <!-- Líneas sutiles de cuadrícula geométrica de plegado -->
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,#DDD8CB_1px,transparent_1px),linear-gradient(to_bottom,#DDD8CB_1px,transparent_1px)] bg-[size:48px_48px] opacity-20 pointer-events-none"></div>
+  <div class="hero-fold-map absolute inset-0 pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="hero-composition grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       
       <!-- Contenido Principal y CTAs -->
-      <div class="lg:col-span-7 flex flex-col items-start text-left">
+      <div class="hero-copy-sheet lg:col-span-7 flex flex-col items-start text-left">
         
         <!-- Badge de Taller en Terracota Suave -->
         <div class="fold-tag fold-tag-terracotta mb-6">
@@ -62,22 +62,22 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
         </div>
 
         <!-- Diferenciales Rápidos en Tiras de Papel Técnico -->
-        <div class="mt-10 pt-8 border-t border-origami-crease-line grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-          <div class="flex items-center gap-3 bg-origami-surface-sheet p-3 border border-origami-crease-line shadow-paper-flat">
+        <div class="hero-proof-strip mt-10 pt-8 border-t border-origami-crease-line grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+          <div class="hero-proof-sheet flex items-center gap-3 bg-origami-surface-sheet p-3 border border-origami-crease-line shadow-paper-flat">
             <div class="w-8 h-8 bg-origami-terracotta-100 text-origami-terracotta-700 flex items-center justify-center shrink-0 border border-origami-terracotta-300">
               <Heart class="w-4 h-4" />
             </div>
             <span class="text-xs sm:text-sm font-bold text-origami-ink-900">100% Hecho a Mano</span>
           </div>
 
-          <div class="flex items-center gap-3 bg-origami-surface-sheet p-3 border border-origami-crease-line shadow-paper-flat">
+          <div class="hero-proof-sheet flex items-center gap-3 bg-origami-surface-sheet p-3 border border-origami-crease-line shadow-paper-flat">
             <div class="w-8 h-8 bg-origami-surface-warm text-origami-ink-700 flex items-center justify-center shrink-0 border border-origami-crease-line">
               <Sparkles class="w-4 h-4 text-origami-terracotta-600" />
             </div>
             <span class="text-xs sm:text-sm font-bold text-origami-ink-900">Diseños a Medida</span>
           </div>
 
-          <div class="flex items-center gap-3 bg-origami-surface-sheet p-3 border border-origami-crease-line shadow-paper-flat">
+          <div class="hero-proof-sheet flex items-center gap-3 bg-origami-surface-sheet p-3 border border-origami-crease-line shadow-paper-flat">
             <div class="w-8 h-8 bg-origami-forest-100 text-origami-forest-800 flex items-center justify-center shrink-0 border border-origami-forest-300">
               <ShieldCheck class="w-4 h-4" />
             </div>
@@ -88,8 +88,8 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
       </div>
 
       <!-- Tarjeta Visual Destacada (Pliego Frontal con Marco Passe-Partout) -->
-      <div class="lg:col-span-5 flex justify-center">
-        <div class="w-full max-w-md bg-origami-surface-sheet p-6 sm:p-8 border border-origami-crease-line shadow-paper-sheet relative fold-notch-tr">
+      <div class="hero-visual-sheet lg:col-span-5 flex justify-center">
+        <div class="hero-art-card folded-sheet w-full max-w-md bg-origami-surface-sheet p-6 sm:p-8 border border-origami-crease-line shadow-paper-sheet relative fold-notch-tr">
           
           <!-- Encabezado de la Ficha Técnica -->
           <div class="flex items-center justify-between border-b border-origami-crease-line pb-4">
@@ -106,15 +106,9 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 
           <!-- Passe-Partout de Papel con Obra -->
           <div class="mt-6 space-y-5">
-            <div class="relative w-full h-48 bg-origami-surface-warm border border-origami-crease-line flex items-center justify-center p-4">
+            <div class="hero-image-sheet folded-sheet relative w-full h-48 bg-origami-surface-warm border border-origami-crease-line flex items-center justify-center p-4">
               
               <!-- Líneas técnicas de pliegue en marca de agua -->
-              <svg class="absolute inset-0 w-full h-full opacity-15 pointer-events-none" viewBox="0 0 200 120">
-                <line x1="0" y1="0" x2="200" y2="120" stroke="#1B1E23" stroke-width="0.5" stroke-dasharray="4 4"/>
-                <line x1="0" y1="120" x2="200" y2="0" stroke="#C25E3E" stroke-width="0.5" stroke-dasharray="4 4"/>
-                <polygon points="100,10 190,110 10,110" fill="none" stroke="#1B1E23" stroke-width="0.5"/>
-              </svg>
-
               <img
                 src={siteConfig.brand.logo}
                 alt="Creación artesanal de Origami"

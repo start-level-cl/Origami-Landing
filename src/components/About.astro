@@ -33,14 +33,14 @@ const pillars = [
 <section
   id="nosotros"
   aria-labelledby="about-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
+  class="about-section scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="about-spread grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Columna de Narrativa y Filosofía -->
-      <div class="lg:col-span-6 flex flex-col items-start">
+      <div class="about-story lg:col-span-6 flex flex-col items-start">
         <div class="fold-tag fold-tag-neutral mb-4">
           <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
           <span>Historia & Filosofía</span>
@@ -79,9 +79,9 @@ const pillars = [
       </div>
 
       <!-- Grid de 4 Pilares con Fichas de Papel -->
-      <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="about-pillar-grid lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
         {pillars.map((pillar, index) => (
-          <div class="paper-sheet paper-sheet-hover p-6 flex flex-col justify-between">
+          <div class="about-pillar paper-sheet paper-sheet-hover p-6 flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-4">
                 <div class="w-10 h-10 bg-origami-surface-warm text-origami-ink-900 flex items-center justify-center border border-origami-crease-line shadow-xs">

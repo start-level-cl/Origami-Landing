@@ -20,7 +20,7 @@ const getServiceIcon = (iconName: string) => {
 <section
   id="servicios"
   aria-labelledby="services-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
+  class="services-section scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -42,13 +42,13 @@ const getServiceIcon = (iconName: string) => {
     </div>
 
     <!-- Grid de 4 Servicios Destacados con Estilo de Pliego Plegado -->
-    <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8">
-      {servicesData.map((service) => {
+    <div class="services-composition mt-14 grid grid-cols-1 md:grid-cols-2 gap-8">
+      {servicesData.map((service, index) => {
         const IconComponent = getServiceIcon(service.iconName);
         const serviceWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(`Hola Origami, me interesa consultar por el servicio de ${service.title}.`)}`;
         
         return (
-          <article class="paper-sheet paper-sheet-hover p-8 flex flex-col justify-between group relative">
+          <article class={`service-sheet paper-sheet paper-sheet-hover p-8 flex flex-col justify-between group relative service-sheet-${index + 1}`}>
             
             <!-- Franja sutil de pliegue superior en terracota -->
             <div class="absolute top-0 left-0 right-0 h-1 bg-origami-terracotta-600"></div>

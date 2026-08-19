@@ -7,7 +7,7 @@ import { siteConfig } from '../config/site.config';
 <section
   id="galeria"
   aria-labelledby="gallery-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
+  class="gallery-section scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -29,21 +29,17 @@ import { siteConfig } from '../config/site.config';
     </div>
 
     <!-- Grid de Creaciones con Estilo Passe-Partout de Papel -->
-    <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {galleryItems.map((item) => {
+    <div class="gallery-composition mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {galleryItems.map((item, index) => {
         const itemWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(`Hola Origami, me gustaría cotizar el modelo "${item.title}".`)}`;
         
         return (
-          <article class="paper-sheet paper-sheet-hover overflow-hidden flex flex-col justify-between group">
+          <article class={`gallery-sample paper-sheet paper-sheet-hover flex flex-col justify-between group gallery-sample-${index + 1}`}>
             
             <!-- Cabecera Visual con tonos cálidos y líneas técnicas de pliegue -->
-            <div class="h-48 bg-origami-surface-warm p-6 flex flex-col justify-between relative overflow-hidden border-b border-origami-crease-line">
+            <div class="gallery-mount h-48 bg-origami-surface-warm p-6 flex flex-col justify-between relative overflow-hidden border-b border-origami-crease-line">
               
               <!-- Líneas sutiles de pliegue diagonal -->
-              <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 200 120">
-                <line x1="0" y1="0" x2="200" y2="120" stroke="#1B1E23" stroke-width="0.5" stroke-dasharray="3 3"/>
-                <line x1="200" y1="0" x2="0" y2="120" stroke="#C25E3E" stroke-width="0.5" stroke-dasharray="3 3"/>
-              </svg>
 
               <div class="flex items-center justify-between z-10">
                 <span class="fold-tag fold-tag-neutral bg-origami-surface-sheet">
