@@ -30,12 +30,9 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ./Origami-Landing
 
       - name: Type Check & Diagnostics
         run: pnpm check
-        working-directory: ./Origami-Landing
 
       - name: Production Build Verification
         run: pnpm build
-        working-directory: ./Origami-Landing
