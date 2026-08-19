@@ -52,6 +52,12 @@ export interface SiteConfig {
     privacyNotice?: string;
     dataProtectionStandard?: string;
   };
+  developerCredit?: {
+    enabled?: boolean;
+    text?: string;
+    url?: string;
+    label?: string;
+  };
 }
 
 // ─── 1. DATOS BASE DEL CLIENTE (Configurar una sola vez) ───────────
@@ -126,4 +132,11 @@ export const siteConfig: SiteConfig = {
   },
   // Opcional: deshabilitado o undefined para proyectos que no requieren sección legal formal
   legal: undefined,
+  // Opcional: Crédito de autoría técnica a Inspy Tech (configurable según requerimiento)
+  developerCredit: {
+    enabled: true,
+    text: 'Desarrollado por',
+    url: 'https://inspytech.cl',
+    label: 'inspytech.cl',
+  },
 };

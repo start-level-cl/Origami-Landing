@@ -146,14 +146,16 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
       <p>
         &copy; {currentYear} {siteConfig.brand.name}. Todos los derechos reservados.
       </p>
-      <p class="text-origami-ink-500">
-        Desarrollado por&nbsp;<a
-          href="https://inspytech.cl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-origami-ink-300 hover:text-origami-terracotta-400 transition-colors focus-visible:ring-2 focus-visible:ring-origami-terracotta-400"
-        >inspytech.cl</a>
-      </p>
+      {siteConfig.developerCredit?.enabled && (
+        <p class="text-origami-ink-500">
+          {siteConfig.developerCredit.text || 'Desarrollado por'}&nbsp;<a
+            href={siteConfig.developerCredit.url || 'https://inspytech.cl'}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-origami-ink-300 hover:text-origami-terracotta-400 transition-colors focus-visible:ring-2 focus-visible:ring-origami-terracotta-400"
+          >{siteConfig.developerCredit.label || 'inspytech.cl'}</a>
+        </p>
+      )}
     </div>
   </div>
 </footer>
