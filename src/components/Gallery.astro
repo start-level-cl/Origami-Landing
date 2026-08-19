@@ -1,7 +1,15 @@
 ---
-import { Sparkles, Layers, ArrowUpRight, MessageCircle } from '@lucide/astro';
+import { Sparkles, ArrowUpRight, MessageCircle, Clock, Scissors, Compass, Check } from '@lucide/astro';
 import { galleryItems } from '../data/gallery';
 import { siteConfig } from '../config/site.config';
+
+const categories = [
+  'Todos',
+  'Regalos & Símbolos',
+  'Decoración Floral',
+  'Geometría Modular',
+  'Ocasiones Especiales',
+] as const;
 ---
 
 <section
@@ -15,76 +23,148 @@ import { siteConfig } from '../config/site.config';
     <div class="text-center max-w-3xl mx-auto">
       <div class="fold-tag fold-tag-terracotta mb-4">
         <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
-        <span>Galería de Creaciones</span>
+        <span>Muestrario de Taller</span>
       </div>
       <h2
         id="gallery-heading"
         class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-origami-ink-900 font-display"
       >
-        Muestrario de arte y figuras en papel
+        Muestrario técnico & creaciones en papel
       </h2>
       <p class="mt-4 text-base sm:text-lg text-origami-ink-600 leading-relaxed">
-        Explora algunos de nuestros modelos más representativos. Cada uno puede ser adaptado en escala, colores y presentación.
+        Cada pieza es desarrollada mediante algoritmos tradicionales y contemporáneos de doblado. Explora nuestras figuras y cotiza escalas o paletas a medida.
       </p>
+
+      <!-- Filtros de Categoría Interactivos -->
+      <div class="mt-8 flex items-center justify-center flex-wrap gap-2" role="tablist" aria-label="Filtrar por categoría">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={idx === 0 ? 'true' : 'false'}
+            data-category={cat}
+            class={`gallery-filter-btn px-4 py-2 text-xs font-mono font-bold tracking-wider uppercase transition-all border ${
+              idx === 0
+                ? 'bg-origami-ink-900 text-white border-origami-ink-900 shadow-paper-flat is-active'
+                : 'bg-origami-surface-warm text-origami-ink-700 border-origami-crease-line hover:bg-origami-surface-base hover:text-origami-ink-900'
+            }`}
+          >
+            {cat}
+            {cat === 'Todos' && <span class="ml-1 text-origami-terracotta-400 font-mono">({galleryItems.length})</span>}
+          </button>
+        ))}
+      </div>
     </div>
 
-    <!-- Grid de Creaciones con Estilo Passe-Partout de Papel -->
-    <div class="gallery-composition mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Grid de Creaciones con Estilo Ficha de Taller y Passe-Partout -->
+    <div id="gallery-grid" class="gallery-composition mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {galleryItems.map((item, index) => {
-        const itemWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(`Hola Origami, me gustaría cotizar el modelo "${item.title}".`)}`;
+        const itemWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(`Hola Origami, me gustaría cotizar el modelo "${item.modelNumber} - ${item.title}".`)}`;
         
         return (
-          <article class={`gallery-sample paper-sheet paper-sheet-hover flex flex-col justify-between group gallery-sample-${index + 1}`}>
+          <article
+            data-item-category={item.category}
+            class={`gallery-sample paper-sheet paper-sheet-hover flex flex-col justify-between group transition-all duration-300 gallery-sample-${index + 1}`}
+          >
             
-            <!-- Cabecera Visual con tonos cálidos y líneas técnicas de pliegue -->
-            <div class="gallery-mount h-48 bg-origami-surface-warm p-6 flex flex-col justify-between relative overflow-hidden border-b border-origami-crease-line">
+            <!-- Cabecera Visual con Passe-Partout e Ilustración Geométrica SVG -->
+            <div class="gallery-mount bg-origami-surface-warm p-6 flex flex-col justify-between relative overflow-hidden border-b border-origami-crease-line">
               
-              <!-- Líneas sutiles de pliegue diagonal -->
+              <!-- Marcas técnicas de corte en las esquinas -->
+              <span class="absolute top-2 left-2 text-[10px] font-mono text-origami-ink-400 select-none">+</span>
+              <span class="absolute top-2 right-2 text-[10px] font-mono text-origami-ink-400 select-none">+</span>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono text-origami-ink-400 select-none">+</span>
+              <span class="absolute bottom-2 right-2 text-[10px] font-mono text-origami-ink-400 select-none">+</span>
 
+              <!-- Barra Superior de Identificación Técnica -->
               <div class="flex items-center justify-between z-10">
-                <span class="fold-tag fold-tag-neutral bg-origami-surface-sheet">
-                  {item.category}
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-xs font-bold text-origami-ink-900 bg-origami-surface-sheet px-2 py-0.5 border border-origami-crease-line shadow-xs">
+                    {item.modelNumber}
+                  </span>
+                  <span class="fold-tag fold-tag-neutral bg-origami-surface-sheet text-[10px]">
+                    {item.category}
+                  </span>
+                </div>
+
+                <span class={`font-mono text-[10px] font-bold px-2 py-0.5 border ${
+                  item.difficulty === 'Maestro'
+                    ? 'bg-origami-terracotta-100 text-origami-terracotta-800 border-origami-terracotta-300'
+                    : item.difficulty === 'Avanzado'
+                    ? 'bg-origami-forest-50 text-origami-forest-800 border-origami-forest-200'
+                    : 'bg-origami-surface-sheet text-origami-ink-700 border-origami-crease-line'
+                }`}>
+                  {item.difficulty}
                 </span>
-                <Layers class="w-5 h-5 text-origami-ink-400 group-hover:text-origami-terracotta-600 transition-colors" />
               </div>
 
-              <div class="z-10 flex items-center justify-between">
-                <div class="flex items-center gap-1.5 bg-origami-surface-sheet px-2.5 py-1 border border-origami-crease-line text-[11px] font-mono font-bold text-origami-ink-700 shadow-xs">
-                  <span>Paleta:</span>
+              <!-- Escenario Visual: Fotografía Real del Modelo -->
+              <div class="my-4 h-48 sm:h-52 flex items-center justify-center relative z-10 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              <!-- Barra Inferior de Datos de Pliego (Muestras de Color & Cotas) -->
+              <div class="z-10 flex items-center justify-between border-t border-origami-crease-line/80 pt-2.5">
+                <div class="flex items-center gap-1.5 bg-origami-surface-sheet px-2 py-1 border border-origami-crease-line text-[11px] font-mono font-bold text-origami-ink-700 shadow-xs">
+                  <span class="text-[10px] text-origami-ink-400">TINTAS:</span>
                   <div class="flex items-center -space-x-1">
                     {item.colors.map((color) => (
-                      <span class="w-3.5 h-3.5 border border-origami-surface-sheet shadow-xs" style={`background-color: ${color};`}></span>
+                      <span class="w-3.5 h-3.5 border border-origami-surface-sheet shadow-xs inline-block" style={`background-color: ${color};`}></span>
                     ))}
                   </div>
                 </div>
 
-                {item.dimensions && (
-                  <span class="text-[11px] font-mono font-bold text-origami-ink-600 bg-origami-surface-sheet px-2 py-0.5 border border-origami-crease-line shadow-xs">
-                    {item.dimensions}
-                  </span>
-                )}
+                <span class="text-[11px] font-mono font-bold text-origami-ink-600 bg-origami-surface-sheet px-2 py-1 border border-origami-crease-line shadow-xs">
+                  {item.dimensions}
+                </span>
               </div>
             </div>
 
-            <!-- Cuerpo de la Ficha Técnica -->
+            <!-- Cuerpo de la Ficha Técnica con Especificaciones de Taller -->
             <div class="p-6 flex-1 flex flex-col justify-between">
               <div>
-                <h3 class="text-xl font-bold text-origami-ink-900 font-display group-hover:text-origami-terracotta-700 transition-colors">
-                  {item.title}
-                </h3>
+                <div class="flex items-start justify-between gap-2">
+                  <h3 class="text-xl font-bold text-origami-ink-900 font-display group-hover:text-origami-terracotta-700 transition-colors">
+                    {item.title}
+                  </h3>
+                </div>
                 
-                <p class="mt-2 text-xs sm:text-sm text-origami-ink-600 leading-relaxed">
+                <p class="mt-2.5 text-xs sm:text-sm text-origami-ink-600 leading-relaxed">
                   {item.description}
                 </p>
 
-                <div class="mt-4 pt-3 border-t border-origami-crease-line text-xs text-origami-ink-600 font-mono">
-                  <strong>Papel:</strong> {item.paperType}
+                <!-- Destaque de Geometría / Atributo Físico -->
+                <div class="mt-3.5 p-2 bg-origami-surface-warm/70 border border-origami-crease-line flex items-center gap-2 text-xs text-origami-ink-800">
+                  <Check class="w-3.5 h-3.5 text-origami-forest-700 shrink-0" />
+                  <span class="font-medium text-[11px]">{item.highlightFeature}</span>
+                </div>
+
+                <!-- Grid de Especificaciones Técnicas de Taller -->
+                <div class="mt-4 pt-3 border-t border-origami-crease-line grid grid-cols-2 gap-2 text-xs font-mono">
+                  <div class="flex items-center gap-1.5 text-origami-ink-700">
+                    <Clock class="w-3.5 h-3.5 text-origami-terracotta-600 shrink-0" />
+                    <span>{item.foldingTime}</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-origami-ink-700">
+                    <Scissors class="w-3.5 h-3.5 text-origami-forest-700 shrink-0" />
+                    <span>{item.foldsCount}</span>
+                  </div>
+                  <div class="col-span-2 flex items-start gap-1.5 text-[11px] text-origami-ink-600">
+                    <Compass class="w-3.5 h-3.5 text-origami-ink-400 shrink-0 mt-0.5" />
+                    <span><strong>Papel:</strong> {item.paperType}</span>
+                  </div>
                 </div>
 
                 <!-- Tags estilo muestra técnica -->
                 <div class="mt-4 flex flex-wrap gap-1.5">
                   {item.tags.map((tag) => (
-                    <span class="px-2.5 py-1 text-[11px] font-mono font-bold bg-origami-surface-warm text-origami-ink-700 border border-origami-crease-line">
+                    <span class="px-2 py-0.5 text-[10px] font-mono font-bold bg-origami-surface-warm text-origami-ink-700 border border-origami-crease-line">
                       #{tag}
                     </span>
                   ))}
@@ -97,10 +177,10 @@ import { siteConfig } from '../config/site.config';
                   href={itemWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-origami-forest-800 hover:text-origami-forest-900 transition-colors"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-origami-forest-800 hover:text-origami-forest-900 transition-colors p-1"
                 >
                   <MessageCircle class="w-4 h-4 text-origami-forest-700" />
-                  <span>Consultar por este diseño</span>
+                  <span>Cotizar este diseño</span>
                 </a>
 
                 <a
@@ -118,5 +198,70 @@ import { siteConfig } from '../config/site.config';
       })}
     </div>
 
+    <!-- Banner Inferior de Cotización de Proyectos Especiales -->
+    <div class="mt-14 p-6 sm:p-8 bg-origami-surface-warm border border-origami-crease-line flex flex-col sm:flex-row items-center justify-between gap-6 shadow-paper-sheet">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-origami-terracotta-700 block mb-1">
+          ¿BUSCAS UN MODELO FUERA DEL CATÁLOGO?
+        </span>
+        <h3 class="text-lg sm:text-xl font-bold text-origami-ink-900 font-display">
+          Desarrollamos piezas a medida para vitrinas, marcas y coleccionistas
+        </h3>
+        <p class="mt-1 text-xs sm:text-sm text-origami-ink-600">
+          Podemos recrear cualquier diagrama de origami o diseñar una composición geométrica personalizada con papeles importados.
+        </p>
+      </div>
+
+      <a
+        href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent('Hola Origami, me gustaría consultar por el desarrollo de un diseño de origami a medida.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-5 py-3 bg-origami-ink-900 hover:bg-origami-ink-800 text-white font-bold text-xs sm:text-sm transition-all shadow-paper-flat hover:shadow-paper-lift shrink-0 focus-visible:ring-2 focus-visible:ring-origami-terracotta-600"
+      >
+        <MessageCircle class="w-4 h-4 text-origami-terracotta-400" />
+        <span>Cotizar Diseño a Medida</span>
+      </a>
+    </div>
+
   </div>
 </section>
+
+<script>
+  // Filtrado de categoría interactivo accesible (sin dependencias)
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.gallery-filter-btn');
+  const galleryCards = document.querySelectorAll<HTMLElement>('#gallery-grid article');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedCategory = btn.dataset.category || 'Todos';
+
+      // Actualizar estado de botones
+      filterButtons.forEach((b) => {
+        const isActive = b === btn;
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        if (isActive) {
+          b.classList.add('bg-origami-ink-900', 'text-white', 'border-origami-ink-900', 'shadow-paper-flat', 'is-active');
+          b.classList.remove('bg-origami-surface-warm', 'text-origami-ink-700', 'border-origami-crease-line');
+        } else {
+          b.classList.remove('bg-origami-ink-900', 'text-white', 'border-origami-ink-900', 'shadow-paper-flat', 'is-active');
+          b.classList.add('bg-origami-surface-warm', 'text-origami-ink-700', 'border-origami-crease-line');
+        }
+      });
+
+      // Filtrar tarjetas
+      galleryCards.forEach((card) => {
+        const itemCategory = card.dataset.itemCategory;
+        if (selectedCategory === 'Todos' || itemCategory === selectedCategory) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.96)';
+        }
+      });
+    });
+  });
+</script>
+
