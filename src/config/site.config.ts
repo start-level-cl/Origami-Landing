@@ -76,9 +76,9 @@ export const siteConfig: SiteConfig = {
     favicon: '/favicon.avif',
     ogImage: '/logo.avif',
     colors: {
-      primary: '#F3B6C8', // Rosa pastel
-      accent: '#B8A9D9', // Lavanda pastel
-      background: '#FFF9F0', // Crema papel
+      primary: '#C25E3E', // Terracota taller
+      accent: '#1E4D3B', // Verde bosque taller
+      background: '#F6F4EF', // Mesa de papel artesanal
     },
   },
   contact: {

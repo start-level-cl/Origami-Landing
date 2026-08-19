@@ -33,7 +33,7 @@ const pillars = [
 <section
   id="nosotros"
   aria-labelledby="about-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-cream-50 border-b border-origami-cream-200/80 relative"
+  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -41,36 +41,36 @@ const pillars = [
       
       <!-- Columna de Narrativa y Filosofía -->
       <div class="lg:col-span-6 flex flex-col items-start">
-        <div class="origami-tag origami-tag-lavender mb-4">
-          <Sparkles class="w-3.5 h-3.5 text-origami-lavender-700" />
-          <span>Nuestra Historia & Pasión</span>
+        <div class="fold-tag fold-tag-neutral mb-4">
+          <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
+          <span>Historia & Filosofía</span>
         </div>
 
         <h2
           id="about-heading"
-          class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-origami-slate-900 leading-tight font-serif"
+          class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-origami-ink-900 leading-tight font-display"
         >
-          El arte de doblar el papel para <span class="text-origami-rose-600">crear momentos eternos</span>
+          El arte de doblar el papel para <span class="text-origami-terracotta-600">crear momentos eternos</span>
         </h2>
 
-        <p class="mt-6 text-base sm:text-lg text-origami-slate-600 leading-relaxed">
+        <p class="mt-6 text-base sm:text-lg text-origami-ink-600 leading-relaxed">
           En <strong>{siteConfig.brand.name}</strong> creemos que un simple pliego de papel puede transformarse en una expresión profunda de afecto, belleza y significado. Nuestra labor combina la tradición milenaria del origami con una sensibilidad moderna orientada al diseño decorativo y los obsequios significativos.
         </p>
 
-        <p class="mt-4 text-base text-origami-slate-600 leading-relaxed">
+        <p class="mt-4 text-base text-origami-ink-600 leading-relaxed">
           No producimos en serie: cada pieza es el resultado de tiempo, paciencia y destreza artesanal. Ya sea una grulla solitaria que lleva un deseo de paz o un arreglo floral completo para ambientar tu hogar, ponemos nuestro corazón en cada doblez.
         </p>
 
-        <!-- Badge de Sello Artesanal con efecto de papel cosido -->
-        <div class="mt-8 p-4 rounded-2xl bg-white border border-origami-cream-300 shadow-paper flex items-center gap-4 w-full sm:w-auto relative overflow-hidden paper-fold-corner">
-          <div class="w-12 h-12 rounded-xl bg-origami-rose-100 border border-origami-rose-200 text-origami-rose-700 flex items-center justify-center shrink-0">
+        <!-- Sello de Compromiso Artesanal -->
+        <div class="mt-8 p-4 bg-origami-surface-sheet border border-origami-crease-line shadow-paper-flat flex items-center gap-4 w-full sm:w-auto relative">
+          <div class="w-12 h-12 bg-origami-terracotta-100 border border-origami-terracotta-300 text-origami-terracotta-700 flex items-center justify-center shrink-0">
             <PackageCheck class="w-6 h-6" />
           </div>
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-origami-slate-500 block">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-origami-ink-400 block">
               Sello & Compromiso Artesanal
             </span>
-            <span class="text-sm font-bold text-origami-slate-900">
+            <span class="text-sm font-bold text-origami-ink-900">
               Hecho a mano en Santiago con envíos coordinados
             </span>
           </div>
@@ -78,26 +78,29 @@ const pillars = [
 
       </div>
 
-      <!-- Grid de 4 Pilares con Esquinas de Papel Dobladas -->
+      <!-- Grid de 4 Pilares con Fichas de Papel -->
       <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {pillars.map((pillar) => (
-          <div class="paper-card paper-card-hover paper-fold-corner p-6 flex flex-col justify-between">
+        {pillars.map((pillar, index) => (
+          <div class="paper-sheet paper-sheet-hover p-6 flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-4">
-                <div class="w-11 h-11 rounded-xl bg-origami-cream-100 text-origami-slate-800 flex items-center justify-center border border-origami-cream-300 shadow-xs">
-                  <pillar.icon class="w-5 h-5 text-origami-rose-600" />
+                <div class="w-10 h-10 bg-origami-surface-warm text-origami-ink-900 flex items-center justify-center border border-origami-crease-line shadow-xs">
+                  <pillar.icon class="w-5 h-5 text-origami-terracotta-600" />
                 </div>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-origami-slate-500 bg-origami-cream-100 px-2 py-0.5 rounded-md border border-origami-cream-200">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-origami-ink-400 bg-origami-surface-warm px-2 py-0.5 border border-origami-crease-line">
                   {pillar.tag}
                 </span>
               </div>
               
-              <h3 class="text-base sm:text-lg font-bold text-origami-slate-900 font-serif">
+              <h3 class="text-base sm:text-lg font-bold text-origami-ink-900 font-display">
                 {pillar.title}
               </h3>
-              <p class="mt-2 text-xs sm:text-sm text-origami-slate-600 leading-relaxed">
+              <p class="mt-2 text-xs sm:text-sm text-origami-ink-600 leading-relaxed">
                 {pillar.description}
               </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-origami-crease-line flex justify-end">
+              <span class="text-[10px] font-mono font-bold text-origami-ink-400">0{index + 1}</span>
             </div>
           </div>
         ))}

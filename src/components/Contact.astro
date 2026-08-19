@@ -8,7 +8,7 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
 <section
   id="contacto"
   aria-labelledby="contact-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-cream-50 border-b border-origami-cream-200/80 relative"
+  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -17,71 +17,71 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
       <!-- Información de Contacto y Ubicación -->
       <div class="lg:col-span-5 flex flex-col justify-between">
         <div>
-          <div class="origami-tag origami-tag-rose mb-4">
-            <Sparkles class="w-3.5 h-3.5 text-origami-rose-700" />
+          <div class="fold-tag fold-tag-terracotta mb-4">
+            <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
             <span>Contacto Directo</span>
           </div>
 
           <h2
             id="contact-heading"
-            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-origami-slate-900 leading-tight font-serif"
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-origami-ink-900 leading-tight font-display"
           >
             Haz tu pedido o cotiza tu diseño especial
           </h2>
 
-          <p class="mt-4 text-base sm:text-lg text-origami-slate-600 leading-relaxed">
+          <p class="mt-4 text-base sm:text-lg text-origami-ink-600 leading-relaxed">
             Completa el formulario para enviar tu solicitud directamente a nuestro WhatsApp oficial o comunícate con nosotros por nuestros canales habilitados.
           </p>
 
-          <!-- Tarjetas de Información Directa con Estilo de Papel -->
-          <div class="mt-8 space-y-4">
+          <!-- Tarjetas de Información Directa -->
+          <div class="mt-8 space-y-3.5">
             
-            <!-- WhatsApp Directo Card con Capas -->
+            <!-- WhatsApp Directo Card -->
             <a
               href={directWhatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 transition-all group shadow-xs paper-fold-corner"
+              class="paper-sheet flex items-center gap-4 p-4 bg-origami-forest-50 border border-origami-forest-200 hover:bg-origami-forest-100 transition-all group shadow-paper-flat"
             >
-              <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <div class="w-12 h-12 bg-origami-forest-700 text-white flex items-center justify-center shrink-0 shadow-xs">
                 <MessageCircle class="w-6 h-6" />
               </div>
               <div class="flex-1">
-                <div class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">Atención Inmediata</div>
-                <div class="text-sm font-bold text-origami-slate-900 group-hover:text-emerald-950">
+                <div class="text-[11px] font-mono font-bold text-origami-forest-800 uppercase tracking-wider">Atención Inmediata</div>
+                <div class="text-sm font-bold text-origami-ink-900 group-hover:text-origami-forest-900 font-mono">
                   +56 9 1234 5678
                 </div>
-                <div class="text-xs text-emerald-700">Respuestas rápidas para pedidos y cotizaciones</div>
+                <div class="text-xs text-origami-forest-700">Respuestas rápidas para pedidos y cotizaciones</div>
               </div>
             </a>
 
             <!-- Ubicación Física -->
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-origami-cream-300 shadow-xs paper-fold-corner">
-              <div class="w-12 h-12 rounded-xl bg-origami-cream-100 text-origami-rose-700 flex items-center justify-center shrink-0 border border-origami-cream-300">
+            <div class="paper-sheet flex items-start gap-4 p-4 bg-origami-surface-sheet border border-origami-crease-line shadow-paper-flat">
+              <div class="w-12 h-12 bg-origami-surface-warm text-origami-terracotta-700 flex items-center justify-center shrink-0 border border-origami-crease-line">
                 <MapPin class="w-6 h-6" />
               </div>
               <div>
-                <div class="text-[11px] font-bold text-origami-slate-500 uppercase tracking-wider">Ubicación / Taller</div>
-                <div class="text-sm font-bold text-origami-slate-900">
+                <div class="text-[11px] font-mono font-bold text-origami-ink-400 uppercase tracking-wider">Ubicación / Taller</div>
+                <div class="text-sm font-bold text-origami-ink-900">
                   {siteConfig.contact.address}
                 </div>
-                <div class="text-xs text-origami-slate-600">
+                <div class="text-xs text-origami-ink-600">
                   {siteConfig.contact.commune}, {siteConfig.contact.city}, {siteConfig.contact.country}
                 </div>
               </div>
             </div>
 
             <!-- Horarios de Atención -->
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-origami-cream-300 shadow-xs paper-fold-corner">
-              <div class="w-12 h-12 rounded-xl bg-origami-lavender-100 text-origami-lavender-800 flex items-center justify-center shrink-0 border border-origami-lavender-300">
-                <Clock class="w-6 h-6" />
+            <div class="paper-sheet flex items-start gap-4 p-4 bg-origami-surface-sheet border border-origami-crease-line shadow-paper-flat">
+              <div class="w-12 h-12 bg-origami-surface-warm text-origami-ink-700 flex items-center justify-center shrink-0 border border-origami-crease-line">
+                <Clock class="w-6 h-6 text-origami-terracotta-600" />
               </div>
               <div>
-                <div class="text-[11px] font-bold text-origami-lavender-800 uppercase tracking-wider">Horario de Atención</div>
-                <div class="text-sm font-bold text-origami-slate-900">
+                <div class="text-[11px] font-mono font-bold text-origami-ink-400 uppercase tracking-wider">Horario de Atención</div>
+                <div class="text-sm font-bold text-origami-ink-900">
                   {siteConfig.contact.openingHours}
                 </div>
-                <div class="text-xs text-origami-slate-600">Coordinación de pedidos y entregas los 7 días de la semana</div>
+                <div class="text-xs text-origami-ink-600">Coordinación de pedidos y entregas los 7 días de la semana</div>
               </div>
             </div>
 
@@ -89,13 +89,13 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
         </div>
 
         <!-- Garantías del Taller -->
-        <div class="mt-8 pt-6 border-t border-origami-cream-300 space-y-2.5">
-          <div class="flex items-center gap-2 text-xs font-semibold text-origami-slate-700">
-            <Heart class="w-4 h-4 text-origami-rose-600 shrink-0" />
+        <div class="mt-8 pt-6 border-t border-origami-crease-line space-y-2.5">
+          <div class="flex items-center gap-2 text-xs font-semibold text-origami-ink-700">
+            <Heart class="w-4 h-4 text-origami-terracotta-600 shrink-0" />
             <span>Asesoría en colores, combinaciones y empaques de regalo</span>
           </div>
-          <div class="flex items-center gap-2 text-xs text-origami-slate-600">
-            <ShieldCheck class="w-4 h-4 text-emerald-700 shrink-0" />
+          <div class="flex items-center gap-2 text-xs text-origami-ink-600">
+            <ShieldCheck class="w-4 h-4 text-origami-forest-700 shrink-0" />
             <span>
               {siteConfig.legal?.enabled
                 ? 'Datos protegidos bajo la Ley N° 21.719 en Chile'
@@ -106,18 +106,18 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
 
       </div>
 
-      <!-- Formulario de Pedido Funcional con Estilo Hoja de Carta Doblada -->
+      <!-- Formulario de Pedido Funcional con Estilo Carta de Taller -->
       <div class="lg:col-span-7">
-        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-origami-cream-300 shadow-paper-lg paper-fold-corner-lg relative">
+        <div class="bg-origami-surface-sheet p-6 sm:p-10 border border-origami-crease-line shadow-paper-sheet relative fold-notch-tr">
           
           <div class="mb-6">
-            <div class="origami-tag origami-tag-rose">
-              ✉️ Carta de Pedido & Cotización
+            <div class="fold-tag fold-tag-terracotta">
+              CARTA DE PEDIDO & COTIZACIÓN
             </div>
-            <h3 class="text-2xl font-bold text-origami-slate-900 font-serif mt-2">
+            <h3 class="text-2xl font-bold text-origami-ink-900 font-display mt-2">
               Envía tu solicitud a WhatsApp
             </h3>
-            <p class="text-xs sm:text-sm text-origami-slate-600 mt-1">
+            <p class="text-xs sm:text-sm text-origami-ink-600 mt-1">
               Ingresa tus datos y detalles de tu pedido. Al presionar enviar, se abrirá WhatsApp con el mensaje estructurado listo para confirmar.
             </p>
           </div>
@@ -127,8 +127,8 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <!-- Campo: Nombre -->
               <div>
-                <label for="order-name" class="block text-xs sm:text-sm font-semibold text-origami-slate-800 mb-1.5">
-                  Nombre completo <span class="text-origami-rose-600 font-bold" aria-hidden="true">*</span>
+                <label for="order-name" class="block text-xs sm:text-sm font-semibold text-origami-ink-900 mb-1.5 font-mono">
+                  NOMBRE COMPLETO <span class="text-origami-terracotta-600 font-bold" aria-hidden="true">*</span>
                 </label>
                 <input
                   type="text"
@@ -136,21 +136,21 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
                   name="name"
                   required
                   placeholder="Ej. Sofía Morales"
-                  class="w-full px-4 py-3 bg-origami-cream-50 border border-origami-cream-300 rounded-xl text-origami-slate-900 text-sm placeholder-origami-slate-400 focus-visible:ring-2 focus-visible:ring-origami-lavender-700 focus-visible:border-origami-lavender-700"
+                  class="w-full px-4 py-3 bg-origami-surface-base border border-origami-crease-line text-origami-ink-900 text-sm placeholder-origami-ink-400 focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 focus-visible:border-origami-terracotta-600"
                 />
               </div>
 
               <!-- Campo: Teléfono -->
               <div>
-                <label for="order-phone" class="block text-xs sm:text-sm font-semibold text-origami-slate-800 mb-1.5">
-                  Teléfono / WhatsApp <span class="text-xs text-origami-slate-500">(opcional)</span>
+                <label for="order-phone" class="block text-xs sm:text-sm font-semibold text-origami-ink-900 mb-1.5 font-mono">
+                  TELÉFONO / WHATSAPP <span class="text-xs text-origami-ink-400 font-normal">(opcional)</span>
                 </label>
                 <input
                   type="tel"
                   id="order-phone"
                   name="phone"
                   placeholder="+56 9 1234 5678"
-                  class="w-full px-4 py-3 bg-origami-cream-50 border border-origami-cream-300 rounded-xl text-origami-slate-900 text-sm placeholder-origami-slate-400 focus-visible:ring-2 focus-visible:ring-origami-lavender-700 focus-visible:border-origami-lavender-700"
+                  class="w-full px-4 py-3 bg-origami-surface-base border border-origami-crease-line text-origami-ink-900 text-sm placeholder-origami-ink-400 focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 focus-visible:border-origami-terracotta-600"
                 />
               </div>
             </div>
@@ -158,13 +158,13 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <!-- Campo: Tipo de Creación / Servicio -->
               <div>
-                <label for="order-service" class="block text-xs sm:text-sm font-semibold text-origami-slate-800 mb-1.5">
-                  Creación o Servicio de Interés
+                <label for="order-service" class="block text-xs sm:text-sm font-semibold text-origami-ink-900 mb-1.5 font-mono">
+                  CREACIÓN O SERVICIO
                 </label>
                 <select
                   id="order-service"
                   name="service"
-                  class="w-full px-4 py-3 bg-origami-cream-50 border border-origami-cream-300 rounded-xl text-origami-slate-900 text-sm focus-visible:ring-2 focus-visible:ring-origami-lavender-700 focus-visible:border-origami-lavender-700"
+                  class="w-full px-4 py-3 bg-origami-surface-base border border-origami-crease-line text-origami-ink-900 text-sm focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 focus-visible:border-origami-terracotta-600"
                 >
                   <option value="Origamis Decorativos">Origamis Decorativos (Ambientes y Hogar)</option>
                   <option value="Origamis para Regalo">Origamis para Regalo (Cajas & Ramos)</option>
@@ -176,31 +176,31 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
 
               <!-- Campo: Cantidad o Fecha estimada -->
               <div>
-                <label for="order-timing" class="block text-xs sm:text-sm font-semibold text-origami-slate-800 mb-1.5">
-                  Cantidad o Fecha Requerida <span class="text-xs text-origami-slate-500">(opcional)</span>
+                <label for="order-timing" class="block text-xs sm:text-sm font-semibold text-origami-ink-900 mb-1.5 font-mono">
+                  CANTIDAD O FECHA <span class="text-xs text-origami-ink-400 font-normal">(opcional)</span>
                 </label>
                 <input
                   type="text"
                   id="order-timing"
                   name="timing"
                   placeholder="Ej. 1 set para este fin de semana / 30 recuerdos"
-                  class="w-full px-4 py-3 bg-origami-cream-50 border border-origami-cream-300 rounded-xl text-origami-slate-900 text-sm placeholder-origami-slate-400 focus-visible:ring-2 focus-visible:ring-origami-lavender-700 focus-visible:border-origami-lavender-700"
+                  class="w-full px-4 py-3 bg-origami-surface-base border border-origami-crease-line text-origami-ink-900 text-sm placeholder-origami-ink-400 focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 focus-visible:border-origami-terracotta-600"
                 />
               </div>
             </div>
 
             <!-- Campo: Detalles y Mensaje -->
             <div>
-              <label for="order-details" class="block text-xs sm:text-sm font-semibold text-origami-slate-800 mb-1.5">
-                Cuéntanos sobre tu idea, colores o especificaciones <span class="text-origami-rose-600 font-bold" aria-hidden="true">*</span>
+              <label for="order-details" class="block text-xs sm:text-sm font-semibold text-origami-ink-900 mb-1.5 font-mono">
+                IDEA, COLORES O ESPECIFICACIONES <span class="text-origami-terracotta-600 font-bold" aria-hidden="true">*</span>
               </label>
               <textarea
                 id="order-details"
                 name="details"
                 rows="4"
                 required
-                placeholder="Indícanos la figura que te gustaría (grullas, flores, cajas...), colores preferidos (rosa, lavanda, crema...) o cualquier dedicatoria especial..."
-                class="w-full px-4 py-3 bg-origami-cream-50 border border-origami-cream-300 rounded-xl text-origami-slate-900 text-sm placeholder-origami-slate-400 focus-visible:ring-2 focus-visible:ring-origami-lavender-700 focus-visible:border-origami-lavender-700 resize-y"
+                placeholder="Indícanos la figura que te gustaría (grullas, flores, cajas...), colores preferidos o cualquier dedicatoria especial..."
+                class="w-full px-4 py-3 bg-origami-surface-base border border-origami-crease-line text-origami-ink-900 text-sm placeholder-origami-ink-400 focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 focus-visible:border-origami-terracotta-600 resize-y"
               ></textarea>
             </div>
 
@@ -208,15 +208,15 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
             <div class="space-y-4 pt-2">
               <button
                 type="submit"
-                class="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold text-white bg-origami-slate-900 hover:bg-origami-slate-800 rounded-2xl transition-all shadow-paper hover:shadow-paper-hover hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-origami-lavender-700"
+                class="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold text-white bg-origami-ink-900 hover:bg-origami-ink-800 transition-all shadow-paper-flat hover:shadow-paper-lift focus-visible:ring-2 focus-visible:ring-origami-terracotta-600"
               >
-                <Send class="w-4 h-4 text-origami-rose-300" />
+                <Send class="w-4 h-4 text-origami-terracotta-400" />
                 <span>Enviar Pedido a WhatsApp</span>
               </button>
 
               {siteConfig.legal?.enabled && siteConfig.legal.privacyNotice && (
-                <div class="flex items-start gap-2.5 text-xs text-origami-slate-500 bg-origami-cream-50 p-3.5 rounded-xl border border-origami-cream-200">
-                  <ShieldCheck class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                <div class="flex items-start gap-2.5 text-xs text-origami-ink-600 bg-origami-surface-warm p-3.5 border border-origami-crease-line">
+                  <ShieldCheck class="w-4 h-4 text-origami-forest-700 shrink-0 mt-0.5" />
                   <span class="leading-relaxed">
                     <strong>Privacidad y Protección de Datos:</strong> {siteConfig.legal.privacyNotice}
                   </span>
@@ -231,18 +231,18 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
 
     </div>
 
-    <!-- Bloque de Mapa Interactivo y Ubicación en Santiago con Esquina Doblada -->
-    <div class="mt-16 bg-white rounded-3xl p-6 sm:p-8 border border-origami-cream-300 shadow-paper relative overflow-hidden paper-fold-corner">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-origami-cream-200">
+    <!-- Bloque de Mapa Interactivo y Ubicación en Santiago -->
+    <div class="mt-16 bg-origami-surface-sheet p-6 sm:p-8 border border-origami-crease-line shadow-paper-sheet relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-origami-crease-line">
         <div>
-          <div class="origami-tag origami-tag-rose mb-1.5">
-            <MapPin class="w-3.5 h-3.5 text-origami-rose-700" />
+          <div class="fold-tag fold-tag-terracotta mb-1.5">
+            <MapPin class="w-3.5 h-3.5 text-origami-terracotta-600" />
             <span>Taller & Punto de Retiro</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-bold text-origami-slate-900 font-serif">
+          <h3 class="text-xl sm:text-2xl font-bold text-origami-ink-900 font-display">
             {siteConfig.contact.address}, {siteConfig.contact.commune}
           </h3>
-          <p class="text-xs sm:text-sm text-origami-slate-600 mt-1">
+          <p class="text-xs sm:text-sm text-origami-ink-600 mt-1">
             Santiago, Chile · Atención y retiros {siteConfig.contact.openingHours.toLowerCase()} (previa coordinación).
           </p>
         </div>
@@ -252,26 +252,26 @@ const directWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?te
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${siteConfig.contact.address}, ${siteConfig.contact.commune}, ${siteConfig.contact.city}, ${siteConfig.contact.country}`)}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-origami-cream-100 hover:bg-origami-cream-200 text-origami-slate-800 font-bold text-xs sm:text-sm border border-origami-cream-300 transition-colors focus-visible:ring-2 focus-visible:ring-origami-lavender-700"
+            class="inline-flex items-center gap-2 px-4 py-2.5 bg-origami-surface-warm hover:bg-origami-surface-base text-origami-ink-900 font-bold text-xs sm:text-sm border border-origami-crease-line transition-colors focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 shadow-paper-flat"
           >
-            <MapPin class="w-4 h-4 text-origami-rose-600" />
-            Abrir en Google Maps
+            <MapPin class="w-4 h-4 text-origami-terracotta-600" />
+            <span>Abrir en Google Maps</span>
           </a>
 
           <a
             href={directWhatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm transition-colors shadow-xs focus-visible:ring-2 focus-visible:ring-emerald-400"
+            class="inline-flex items-center gap-2 px-4 py-2.5 bg-origami-forest-700 hover:bg-origami-forest-800 text-white font-bold text-xs sm:text-sm transition-colors shadow-paper-flat focus-visible:ring-2 focus-visible:ring-origami-forest-700"
           >
             <MessageCircle class="w-4 h-4" />
-            Coordinar Retiro
+            <span>Coordinar Retiro</span>
           </a>
         </div>
       </div>
 
       <!-- Contenedor del Mapa iframe con carga diferida -->
-      <div class="mt-6 w-full rounded-2xl overflow-hidden border border-origami-cream-300 shadow-inner bg-origami-cream-100">
+      <div class="mt-6 w-full overflow-hidden border border-origami-crease-line shadow-inner bg-origami-surface-warm">
         <iframe
           src={siteConfig.contact.googleMapsEmbedUrl}
           width="100%"

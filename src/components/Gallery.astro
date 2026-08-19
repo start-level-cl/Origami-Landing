@@ -7,23 +7,23 @@ import { siteConfig } from '../config/site.config';
 <section
   id="galeria"
   aria-labelledby="gallery-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-white border-b border-origami-cream-200/80 relative"
+  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Encabezado de Sección -->
     <div class="text-center max-w-3xl mx-auto">
-      <div class="origami-tag origami-tag-rose mb-4">
-        <Sparkles class="w-3.5 h-3.5 text-origami-rose-700" />
+      <div class="fold-tag fold-tag-terracotta mb-4">
+        <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
         <span>Galería de Creaciones</span>
       </div>
       <h2
         id="gallery-heading"
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-origami-slate-900 font-serif"
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-origami-ink-900 font-display"
       >
         Muestrario de arte y figuras en papel
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-origami-slate-600 leading-relaxed">
+      <p class="mt-4 text-base sm:text-lg text-origami-ink-600 leading-relaxed">
         Explora algunos de nuestros modelos más representativos. Cada uno puede ser adaptado en escala, colores y presentación.
       </p>
     </div>
@@ -34,59 +34,61 @@ import { siteConfig } from '../config/site.config';
         const itemWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(`Hola Origami, me gustaría cotizar el modelo "${item.title}".`)}`;
         
         return (
-          <article class="paper-card paper-card-hover paper-fold-corner overflow-hidden flex flex-col justify-between group">
+          <article class="paper-sheet paper-sheet-hover overflow-hidden flex flex-col justify-between group">
             
-            <!-- Cabecera Visual con tonos pastel y pliegue geométrico -->
-            <div class="h-48 bg-gradient-to-br from-origami-cream-100 via-origami-rose-50 to-origami-lavender-100 p-6 flex flex-col justify-between relative overflow-hidden border-b border-origami-cream-200">
+            <!-- Cabecera Visual con tonos cálidos y líneas técnicas de pliegue -->
+            <div class="h-48 bg-origami-surface-warm p-6 flex flex-col justify-between relative overflow-hidden border-b border-origami-crease-line">
               
-              <!-- Decoración abstracta de origami geométrica -->
-              <div class="absolute -right-8 -bottom-8 w-36 h-36 border-2 border-origami-rose-300/50 rounded-3xl rotate-45 pointer-events-none group-hover:rotate-90 transition-transform duration-700"></div>
-              <div class="absolute -left-6 -top-6 w-28 h-28 bg-origami-lavender-200/40 rounded-full blur-xl pointer-events-none"></div>
+              <!-- Líneas sutiles de pliegue diagonal -->
+              <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 200 120">
+                <line x1="0" y1="0" x2="200" y2="120" stroke="#1B1E23" stroke-width="0.5" stroke-dasharray="3 3"/>
+                <line x1="200" y1="0" x2="0" y2="120" stroke="#C25E3E" stroke-width="0.5" stroke-dasharray="3 3"/>
+              </svg>
 
               <div class="flex items-center justify-between z-10">
-                <span class="origami-tag origami-tag-rose bg-white/90">
+                <span class="fold-tag fold-tag-neutral bg-origami-surface-sheet">
                   {item.category}
                 </span>
-                <Layers class="w-5 h-5 text-origami-slate-400 group-hover:text-origami-rose-600 transition-colors" />
+                <Layers class="w-5 h-5 text-origami-ink-400 group-hover:text-origami-terracotta-600 transition-colors" />
               </div>
 
               <div class="z-10 flex items-center justify-between">
-                <div class="flex items-center gap-1.5 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-lg border border-origami-cream-300 text-[11px] font-bold text-origami-slate-700 shadow-xs">
+                <div class="flex items-center gap-1.5 bg-origami-surface-sheet px-2.5 py-1 border border-origami-crease-line text-[11px] font-mono font-bold text-origami-ink-700 shadow-xs">
                   <span>Paleta:</span>
                   <div class="flex items-center -space-x-1">
                     {item.colors.map((color) => (
-                      <span class="w-3.5 h-3.5 rounded-full border border-white shadow-xs" style={`background-color: ${color};`}></span>
+                      <span class="w-3.5 h-3.5 border border-origami-surface-sheet shadow-xs" style={`background-color: ${color};`}></span>
                     ))}
                   </div>
                 </div>
 
                 {item.dimensions && (
-                  <span class="text-[11px] font-mono font-bold text-origami-slate-600 bg-white/90 px-2 py-0.5 rounded-md border border-origami-cream-300 shadow-xs">
+                  <span class="text-[11px] font-mono font-bold text-origami-ink-600 bg-origami-surface-sheet px-2 py-0.5 border border-origami-crease-line shadow-xs">
                     {item.dimensions}
                   </span>
                 )}
               </div>
             </div>
 
-            <!-- Cuerpo de la Tarjeta -->
+            <!-- Cuerpo de la Ficha Técnica -->
             <div class="p-6 flex-1 flex flex-col justify-between">
               <div>
-                <h3 class="text-xl font-bold text-origami-slate-900 font-serif group-hover:text-origami-rose-700 transition-colors">
+                <h3 class="text-xl font-bold text-origami-ink-900 font-display group-hover:text-origami-terracotta-700 transition-colors">
                   {item.title}
                 </h3>
                 
-                <p class="mt-2 text-xs sm:text-sm text-origami-slate-600 leading-relaxed">
+                <p class="mt-2 text-xs sm:text-sm text-origami-ink-600 leading-relaxed">
                   {item.description}
                 </p>
 
-                <div class="mt-4 pt-3 border-t border-origami-cream-200 text-xs text-origami-slate-500 font-medium">
+                <div class="mt-4 pt-3 border-t border-origami-crease-line text-xs text-origami-ink-600 font-mono">
                   <strong>Papel:</strong> {item.paperType}
                 </div>
 
-                <!-- Tags estilo perforación artesanal -->
+                <!-- Tags estilo muestra técnica -->
                 <div class="mt-4 flex flex-wrap gap-1.5">
                   {item.tags.map((tag) => (
-                    <span class="px-2.5 py-1 text-[11px] font-bold bg-origami-cream-100 text-origami-slate-700 rounded-lg border border-origami-cream-300">
+                    <span class="px-2.5 py-1 text-[11px] font-mono font-bold bg-origami-surface-warm text-origami-ink-700 border border-origami-crease-line">
                       #{tag}
                     </span>
                   ))}
@@ -94,20 +96,20 @@ import { siteConfig } from '../config/site.config';
               </div>
 
               <!-- CTA de Cotización Directa -->
-              <div class="mt-6 pt-4 border-t border-origami-cream-200 flex items-center justify-between gap-2">
+              <div class="mt-6 pt-4 border-t border-origami-crease-line flex items-center justify-between gap-2">
                 <a
                   href={itemWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-700 transition-colors"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-origami-forest-800 hover:text-origami-forest-900 transition-colors"
                 >
-                  <MessageCircle class="w-4 h-4 text-emerald-600" />
-                  Consultar por este diseño
+                  <MessageCircle class="w-4 h-4 text-origami-forest-700" />
+                  <span>Consultar por este diseño</span>
                 </a>
 
                 <a
                   href="#contacto"
-                  class="p-2 rounded-xl text-origami-slate-500 hover:text-origami-rose-600 hover:bg-origami-rose-50 transition-colors"
+                  class="p-2 text-origami-ink-400 hover:text-origami-terracotta-600 hover:bg-origami-surface-warm transition-colors"
                   aria-label={`Pedir información sobre ${item.title}`}
                 >
                   <ArrowUpRight class="w-4 h-4" />

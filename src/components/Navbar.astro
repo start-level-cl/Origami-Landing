@@ -6,27 +6,27 @@ const navItems = siteConfig.navigation.main;
 const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(siteConfig.contact.whatsappDefaultMessage)}`;
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-origami-cream-200/80 bg-origami-cream-50/90 backdrop-blur-md transition-all">
+<header class="sticky top-0 z-50 w-full border-b border-origami-crease-line bg-origami-surface-base/95 backdrop-blur-md transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 sm:h-20">
       
       <!-- Logotipo e Identidad de Marca -->
-      <a href="#inicio" class="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-origami-lavender-700 rounded-xl p-1">
-        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white shadow-paper border border-origami-cream-200 flex items-center justify-center p-1.5 overflow-hidden transition-transform group-hover:scale-105">
+      <a href="#inicio" class="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 p-1">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-origami-surface-sheet shadow-paper-flat border border-origami-crease-line flex items-center justify-center p-1.5 overflow-hidden transition-transform group-hover:scale-105">
           <img
             src={siteConfig.brand.logo}
             alt={`Logotipo ${siteConfig.brand.name}`}
-            class="w-full h-full object-contain rounded-lg"
+            class="w-full h-full object-contain"
             loading="eager"
             width="44"
             height="44"
           />
         </div>
         <div class="flex flex-col">
-          <span class="text-xl sm:text-2xl font-bold tracking-tight text-origami-slate-900 leading-none font-serif">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-origami-ink-900 leading-none font-display">
             {siteConfig.brand.name}
           </span>
-          <span class="text-[10px] font-semibold tracking-wider text-origami-slate-500 uppercase mt-0.5">
+          <span class="text-[10px] font-mono font-bold tracking-wider text-origami-ink-400 uppercase mt-0.5">
             {siteConfig.brand.slogan}
           </span>
         </div>
@@ -34,12 +34,12 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 
       <!-- Navegación de Escritorio -->
       <nav aria-label="Navegación principal" class="hidden xl:flex items-center gap-6">
-        <ul class="flex items-center gap-1 lg:gap-2">
+        <ul class="flex items-center gap-1 lg:gap-1.5">
           {navItems.map((item) => (
             <li>
               <a
                 href={item.href}
-                class="text-sm font-medium text-origami-slate-700 hover:text-origami-rose-600 hover:bg-origami-rose-50/80 transition-colors px-3 py-2 rounded-xl focus-visible:ring-2 focus-visible:ring-origami-lavender-700"
+                class="text-sm font-medium text-origami-ink-700 hover:text-origami-terracotta-600 hover:bg-origami-surface-warm transition-colors px-3 py-1.5 focus-visible:ring-2 focus-visible:ring-origami-terracotta-600"
               >
                 {item.label}
               </a>
@@ -47,23 +47,23 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
           ))}
         </ul>
 
-        <div class="flex items-center gap-3 pl-3 border-l border-origami-cream-200">
+        <div class="flex items-center gap-3 pl-3 border-l border-origami-crease-line">
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-emerald-700"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-origami-forest-800 bg-origami-forest-100 hover:bg-origami-forest-200 border border-origami-forest-300 transition-all shadow-paper-flat focus-visible:ring-2 focus-visible:ring-origami-forest-700"
           >
-            <MessageCircle class="w-4 h-4 text-emerald-600 shrink-0" />
-            WhatsApp
+            <MessageCircle class="w-4 h-4 text-origami-forest-700 shrink-0" />
+            <span>WhatsApp</span>
           </a>
 
           <a
             href="#contacto"
-            class="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold text-white bg-origami-slate-900 hover:bg-origami-slate-800 rounded-xl transition-all shadow-paper hover:shadow-paper-hover focus-visible:ring-2 focus-visible:ring-origami-lavender-700"
+            class="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold text-white bg-origami-ink-900 hover:bg-origami-ink-800 transition-all shadow-paper-flat hover:shadow-paper-lift focus-visible:ring-2 focus-visible:ring-origami-terracotta-600"
           >
-            <Sparkles class="w-3.5 h-3.5 text-origami-rose-300" />
-            Hacer Pedido
+            <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-400" />
+            <span>Hacer Pedido</span>
           </a>
         </div>
       </nav>
@@ -74,7 +74,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="p-2 text-emerald-700 hover:bg-emerald-50 rounded-xl transition-colors"
+          class="p-2 text-origami-forest-700 hover:bg-origami-forest-100 transition-colors"
           aria-label="Escribir por WhatsApp a Origami"
         >
           <MessageCircle class="w-5 h-5" />
@@ -87,12 +87,12 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
           aria-controls="mobile-menu"
           aria-expanded="false"
           id="mobile-menu-button"
-          class="p-2.5 rounded-xl text-origami-slate-800 hover:text-origami-slate-950 hover:bg-origami-cream-200 focus-visible:ring-2 focus-visible:ring-origami-lavender-700 transition-colors"
+          class="p-2.5 text-origami-ink-900 hover:bg-origami-surface-warm focus-visible:ring-2 focus-visible:ring-origami-terracotta-600 transition-colors border border-origami-crease-line"
         >
           <div class="w-5 h-4 relative flex flex-col justify-between items-center pointer-events-none" aria-hidden="true">
-            <span class="hamburger-line-1 w-5 h-0.5 bg-origami-slate-800 rounded-full transition-all duration-300 ease-in-out origin-center"></span>
-            <span class="hamburger-line-2 w-5 h-0.5 bg-origami-slate-800 rounded-full transition-all duration-300 ease-in-out origin-center"></span>
-            <span class="hamburger-line-3 w-5 h-0.5 bg-origami-slate-800 rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+            <span class="hamburger-line-1 w-5 h-0.5 bg-origami-ink-900 transition-all duration-300 ease-in-out origin-center"></span>
+            <span class="hamburger-line-2 w-5 h-0.5 bg-origami-ink-900 transition-all duration-300 ease-in-out origin-center"></span>
+            <span class="hamburger-line-3 w-5 h-0.5 bg-origami-ink-900 transition-all duration-300 ease-in-out origin-center"></span>
           </div>
         </button>
       </div>
@@ -104,23 +104,23 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
       class="mobile-menu-wrapper xl:hidden"
     >
       <div class="overflow-hidden">
-        <div class="py-4 border-t border-origami-cream-200/90 bg-origami-cream-50/95 backdrop-blur-md">
+        <div class="py-4 border-t border-origami-crease-line bg-origami-surface-base">
           <ul class="flex flex-col gap-1">
             {navItems.map((item) => (
               <li>
                 <a
                   href={item.href}
-                  class="mobile-nav-link block px-3 py-2.5 text-base font-medium text-origami-slate-700 hover:text-origami-rose-700 hover:bg-origami-rose-50 rounded-xl transition-colors"
+                  class="mobile-nav-link block px-3 py-2.5 text-base font-medium text-origami-ink-700 hover:text-origami-terracotta-600 hover:bg-origami-surface-warm transition-colors"
                 >
                   {item.label}
                 </a>
               </li>
             ))}
           </ul>
-          <div class="mt-4 pt-4 border-t border-origami-cream-200 flex flex-col gap-2">
+          <div class="mt-4 pt-4 border-t border-origami-crease-line flex flex-col gap-2">
             <a
               href="#contacto"
-              class="mobile-nav-link block w-full text-center px-4 py-3 text-sm font-bold text-white bg-origami-slate-900 hover:bg-origami-slate-800 rounded-xl transition-colors shadow-paper"
+              class="mobile-nav-link block w-full text-center px-4 py-3 text-sm font-bold text-white bg-origami-ink-900 hover:bg-origami-ink-800 transition-colors shadow-paper-flat"
             >
               Hacer un Pedido / Cotizar
             </a>

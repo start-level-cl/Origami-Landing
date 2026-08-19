@@ -4,65 +4,67 @@ export default {
   theme: {
     extend: {
       colors: {
-        'origami-rose': {
-          50: '#FDF4F6',
-          100: '#FCE7ED',
-          200: '#F9D1DD',
-          300: '#F3B6C8', // Brief Primario
-          400: '#E78AA6',
-          500: '#D45D81',
-          600: '#B93E64',
-          700: '#942B4B',
-          800: '#752039',
-          900: '#551627',
+        'origami-surface': {
+          base: '#F6F4EF',    // Mesa de taller / fondo general
+          sheet: '#FFFFFF',   // Pliego frontal de papel
+          warm: '#ECE8DE',    // Pliego secundario / solapas
+          card: '#FAF9F6',    // Fondo de tarjetas reposadas
+          muted: '#E5E1D6',   // Tono hundido / ranuras
         },
-        'origami-lavender': {
-          50: '#F7F5FC',
-          100: '#EFEAF8',
-          200: '#DED3F1',
-          300: '#CABBE7',
-          400: '#B8A9D9', // Brief Acento / CTA
-          500: '#9782C4',
-          600: '#765FA8',
-          700: '#5C4789',
-          800: '#46346B',
-          900: '#32244E',
+        'origami-ink': {
+          50: '#F6F7F9',
+          100: '#ECEEF2',
+          200: '#C2C6CF',
+          300: '#9CA3AF',
+          400: '#7C8494',
+          500: '#5F6775',
+          600: '#4A515C',
+          700: '#353B45',
+          800: '#252930',
+          900: '#1B1E23',
+          950: '#111317',
         },
-        'origami-cream': {
-          50: '#FFFDF9',
-          100: '#FFF9F0', // Brief Fondo Base
-          200: '#F7EFE3',
-          300: '#EEE1CD',
-          400: '#DFCCAF',
-          500: '#CBB28C',
-          600: '#AC906A',
-          700: '#896E4C',
-          800: '#685135',
-          900: '#473622',
+        'origami-terracotta': {
+          50: '#FCF6F4',
+          100: '#F8ECE8',
+          200: '#F0D4CC',
+          300: '#E4B2A3',
+          400: '#D87B5E',
+          500: '#CC6949',
+          600: '#C25E3E', // Acento Taller
+          700: '#A84E32',
+          800: '#883E27',
+          900: '#682E1C',
         },
-        'origami-slate': {
-          50: '#F7F6F9',
-          100: '#EDEAF2',
-          200: '#DAD4E4',
-          300: '#BBB2CD',
-          400: '#9589AF',
-          500: '#736590',
-          600: '#5A4D74',
-          700: '#44395A',
-          800: '#2D263B',
-          900: '#1D1827',
-          950: '#110D18',
+        'origami-forest': {
+          50: '#F2F7F4',
+          100: '#E6EFEA',
+          200: '#C7DEC6',
+          300: '#9FC3AD',
+          400: '#6EA083',
+          500: '#467F61',
+          600: '#2D664D',
+          700: '#1E4D3B', // Acción WhatsApp & Confianza
+          800: '#16382B',
+          900: '#0F241C',
+        },
+        'origami-crease': {
+          line: '#DDD8CB',
+          light: '#FFFFFF',
+          dark: '#C8C2B3',
         },
       },
       boxShadow: {
-        paper: '0 2px 10px -2px rgba(45, 38, 59, 0.05), 0 8px 24px -4px rgba(45, 38, 59, 0.07)',
-        'paper-hover': '0 6px 16px -3px rgba(45, 38, 59, 0.08), 0 16px 36px -6px rgba(45, 38, 59, 0.12)',
-        'paper-lg': '0 12px 32px -8px rgba(45, 38, 59, 0.09), 0 24px 56px -12px rgba(45, 38, 59, 0.13)',
-        fold: 'inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 4px 14px -2px rgba(45, 38, 59, 0.06)',
+        'paper-flat': '1px 1px 0px #DDD8CB',
+        'paper-sheet': '1px 1px 0px #DDD8CB, 2px 4px 10px -2px rgba(27, 30, 35, 0.05)',
+        'paper-lift': '2px 2px 0px #C8C2B3, 5px 8px 18px -3px rgba(27, 30, 35, 0.09)',
+        'paper-float': '0 4px 16px -2px rgba(27, 30, 35, 0.08)',
+        fold: 'inset 0 1px 1px rgba(255, 255, 255, 0.9), 1px 1px 0px #DDD8CB',
       },
       fontFamily: {
+        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        mono: ['"Space Mono"', 'monospace'],
       },
     },
   },

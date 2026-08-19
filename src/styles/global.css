@@ -16,150 +16,64 @@
   }
 
   body {
-    @apply antialiased text-origami-slate-800 bg-origami-cream-50 selection:bg-origami-rose-200 selection:text-origami-slate-900;
+    @apply antialiased text-origami-ink-900 bg-origami-surface-base;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   /* Mejora de accesibilidad para foco de navegación por teclado WCAG AA */
   :focus-visible {
-    @apply outline-none ring-2 ring-origami-lavender-700 ring-offset-2 ring-offset-origami-cream-50;
+    @apply outline-none ring-2 ring-origami-terracotta-600 ring-offset-2 ring-offset-origami-surface-base;
   }
 }
 
 @layer components {
-  /* Efecto de textura y tarjeta de papel */
-  .paper-card {
-    @apply bg-white border border-origami-cream-200 shadow-paper rounded-2xl transition-all duration-300 relative;
+  /* Pliego de papel estándar (Superficie Frontal Z1) */
+  .paper-sheet {
+    @apply bg-origami-surface-sheet border border-origami-crease-line shadow-paper-sheet transition-all duration-200;
   }
 
-  .paper-card-hover {
-    @apply hover:border-origami-rose-300 hover:shadow-paper-hover hover:-translate-y-1;
+  /* Microinteracción de elevación táctil (Z2 en hover) */
+  .paper-sheet-hover {
+    @apply hover:shadow-paper-lift hover:-translate-y-0.5 hover:border-origami-crease-dark;
   }
 
-  /* Efecto de pliegue tridimensional de esquina (Folded Corner 3D) */
-  .paper-fold-corner {
-    position: relative;
-    overflow: hidden;
+  /* Pliego reposado secundario (Z0 / Inset) */
+  .paper-sheet-warm {
+    @apply bg-origami-surface-warm border border-origami-crease-line;
   }
 
-  .paper-fold-corner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 26px 26px 0;
-    border-color: transparent #F3B6C8 transparent transparent;
-    box-shadow: -2px 2px 5px rgba(45, 38, 59, 0.14);
-    z-index: 10;
-    transition: border-width 0.25s ease;
-  }
-
-  .paper-fold-corner::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 26px;
-    height: 26px;
-    background: linear-gradient(135deg, transparent 48%, rgba(45, 38, 59, 0.08) 52%);
-    pointer-events: none;
-    z-index: 9;
-  }
-
-  /* Pliegue de esquina grande para tarjetas hero / contacto */
-  .paper-fold-corner-lg {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .paper-fold-corner-lg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 36px 36px 0;
-    border-color: transparent #ECA4B8 transparent transparent;
-    box-shadow: -3px 3px 8px rgba(45, 38, 59, 0.18);
-    z-index: 10;
-    transition: border-width 0.25s ease;
-  }
-
-  .paper-fold-corner-lg::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, transparent 48%, rgba(45, 38, 59, 0.1) 52%);
-    pointer-events: none;
-    z-index: 9;
-  }
-
-  /* Efecto de capas de papel superpuestas (Paper Stack Illusion) */
-  .paper-stack {
-    box-shadow: 
-      0 2px 6px -1px rgba(45, 38, 59, 0.06),
-      4px 4px 0 0 #FCE7ED,
-      8px 8px 0 0 #EFEAF8,
-      0 16px 32px -8px rgba(45, 38, 59, 0.1);
-  }
-
-  .paper-stack-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .paper-stack-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 
-      0 4px 10px -2px rgba(45, 38, 59, 0.08),
-      6px 6px 0 0 #F8CFDC,
-      12px 12px 0 0 #DED3F1,
-      0 20px 40px -10px rgba(45, 38, 59, 0.14);
-  }
-
-  /* Línea sutil que evoca el marcado y hendidura de pliegue */
-  .crease-line {
-    background-image: linear-gradient(90deg, transparent, rgba(184, 169, 217, 0.5), transparent);
-  }
-
+  /* Línea de pliegue y hendidura */
   .crease-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(243, 182, 200, 0.8) 30%, rgba(184, 169, 217, 0.8) 70%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, #DDD8CB 20%, #DDD8CB 80%, transparent 100%);
   }
 
-  /* Etiqueta artesanal tipo tag con borde punteado de costura/corte */
-  .origami-tag {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-lg border border-dashed shadow-sm;
+  /* Hendidura doble tipo pliegue monte (Mountain Crease) */
+  .crease-mountain {
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #DDD8CB;
   }
 
-  .origami-tag-rose {
-    @apply bg-origami-rose-100/80 text-origami-rose-900 border-origami-rose-300;
+  /* Etiquetas de taller con estilo de pliego técnico */
+  .fold-tag {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-bold tracking-wider uppercase;
   }
 
-  .origami-tag-lavender {
-    @apply bg-origami-lavender-100/80 text-origami-lavender-900 border-origami-lavender-300;
+  .fold-tag-terracotta {
+    @apply bg-origami-terracotta-100 text-origami-terracotta-800 border border-origami-terracotta-300;
   }
 
-  /* Efecto de borde facetado de origami */
-  .origami-facet-border {
-    position: relative;
+  .fold-tag-forest {
+    @apply bg-origami-forest-100 text-origami-forest-800 border border-origami-forest-300;
   }
 
-  .origami-facet-border::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #F3B6C8 0%, #B8A9D9 50%, #FFF9F0 100%);
+  .fold-tag-neutral {
+    @apply bg-origami-surface-warm text-origami-ink-700 border border-origami-crease-line;
+  }
+
+  /* Chaflán angular en 45 grados (Corte en inglete) */
+  .fold-notch-tr {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
   }
 }
 

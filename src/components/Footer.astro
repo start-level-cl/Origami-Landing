@@ -7,39 +7,35 @@ const footerNav = siteConfig.navigation.footer;
 const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(siteConfig.contact.whatsappDefaultMessage)}`;
 ---
 
-<footer class="bg-origami-slate-950 text-origami-slate-300 py-16 sm:py-20 border-t border-origami-slate-800 relative overflow-hidden">
+<footer class="bg-origami-ink-950 text-origami-ink-200 py-16 sm:py-20 border-t border-origami-ink-900 relative overflow-hidden">
   
-  <!-- Textura sutil y destello de color en esquinas -->
-  <div class="absolute -top-24 -left-24 w-72 h-72 bg-origami-rose-900/20 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-origami-lavender-900/20 rounded-full blur-3xl pointer-events-none"></div>
-
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
       
       <!-- Identidad y Eslogan -->
       <div class="md:col-span-5">
-        <a href="#inicio" class="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-origami-lavender-400 rounded-2xl p-1 w-fit">
-          <div class="w-12 h-12 rounded-2xl bg-origami-slate-900 border border-origami-slate-800 flex items-center justify-center p-1.5 shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
+        <a href="#inicio" class="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-origami-terracotta-400 p-1 w-fit">
+          <div class="w-12 h-12 bg-origami-ink-900 border border-origami-ink-800 flex items-center justify-center p-1.5 shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
             <img
               src={siteConfig.brand.logo}
               alt={`Logotipo ${siteConfig.brand.name}`}
-              class="w-full h-full object-contain rounded-lg"
+              class="w-full h-full object-contain"
               loading="lazy"
               width="48"
               height="48"
             />
           </div>
           <div class="flex flex-col">
-            <span class="text-2xl font-bold tracking-tight text-white leading-none font-serif">
+            <span class="text-2xl font-bold tracking-tight text-white leading-none font-display">
               {siteConfig.brand.name}
             </span>
-            <span class="text-[11px] font-semibold tracking-wider text-origami-rose-300 uppercase mt-1">
+            <span class="text-[11px] font-mono font-bold tracking-wider text-origami-terracotta-400 uppercase mt-1">
               {siteConfig.brand.slogan}
             </span>
           </div>
         </a>
 
-        <p class="mt-4 text-sm text-origami-slate-300 max-w-sm leading-relaxed">
+        <p class="mt-4 text-sm text-origami-ink-300 max-w-sm leading-relaxed">
           {siteConfig.brand.description}
         </p>
 
@@ -50,7 +46,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
               href={siteConfig.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-origami-slate-900 border border-origami-slate-800 text-origami-rose-300 hover:text-white hover:bg-origami-slate-800 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-origami-rose-400"
+              class="inline-flex items-center gap-1.5 px-3 py-2 bg-origami-ink-900 border border-origami-ink-800 text-origami-ink-200 hover:text-white hover:bg-origami-ink-800 text-xs font-mono font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-origami-terracotta-400"
               aria-label="Seguir a Origami en Instagram"
             >
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -67,7 +63,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
               href={siteConfig.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-origami-slate-900 border border-origami-slate-800 text-origami-lavender-300 hover:text-white hover:bg-origami-slate-800 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-origami-lavender-400"
+              class="inline-flex items-center gap-1.5 px-3 py-2 bg-origami-ink-900 border border-origami-ink-800 text-origami-ink-200 hover:text-white hover:bg-origami-ink-800 text-xs font-mono font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-origami-terracotta-400"
               aria-label="Seguir a Origami en Facebook"
             >
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -81,9 +77,9 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-950/80 border border-emerald-800/80 text-emerald-300 hover:bg-emerald-900 text-xs font-bold transition-colors focus-visible:ring-2 focus-visible:ring-emerald-400"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-origami-forest-800 border border-origami-forest-700 text-origami-forest-100 hover:bg-origami-forest-700 text-xs font-mono font-bold transition-colors focus-visible:ring-2 focus-visible:ring-origami-forest-400"
           >
-            <MessageCircle class="w-4 h-4 text-emerald-400" />
+            <MessageCircle class="w-4 h-4 text-origami-forest-300" />
             <span>WhatsApp</span>
           </a>
         </div>
@@ -91,7 +87,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 
       <!-- Navegación Secundaria -->
       <div class="md:col-span-4">
-        <h3 class="text-xs font-bold text-white uppercase tracking-wider font-serif">
+        <h3 class="text-xs font-mono font-bold text-white uppercase tracking-wider">
           Navegación
         </h3>
         <ul class="mt-4 grid grid-cols-2 gap-2.5 text-sm">
@@ -99,7 +95,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
             <li>
               <a
                 href={link.href}
-                class="text-origami-slate-300 hover:text-origami-rose-300 transition-colors focus-visible:ring-2 focus-visible:ring-origami-rose-400 rounded px-1 py-0.5 inline-block"
+                class="text-origami-ink-300 hover:text-origami-terracotta-400 transition-colors focus-visible:ring-2 focus-visible:ring-origami-terracotta-400 px-1 py-0.5 inline-block"
               >
                 {link.label}
               </a>
@@ -110,22 +106,22 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 
       <!-- Ubicación y Horarios -->
       <div class="md:col-span-3">
-        <h3 class="text-xs font-bold text-white uppercase tracking-wider font-serif">
+        <h3 class="text-xs font-mono font-bold text-white uppercase tracking-wider">
           Ubicación & Horarios
         </h3>
         
-        <div class="mt-4 space-y-3 text-xs sm:text-sm text-origami-slate-300">
+        <div class="mt-4 space-y-3 text-xs sm:text-sm text-origami-ink-300">
           <div class="flex items-start gap-2.5">
-            <MapPin class="w-4 h-4 text-origami-rose-400 shrink-0 mt-0.5" />
+            <MapPin class="w-4 h-4 text-origami-terracotta-400 shrink-0 mt-0.5" />
             <span>{siteConfig.contact.address}, {siteConfig.contact.commune}, {siteConfig.contact.city}</span>
           </div>
 
           <div class="flex items-start gap-2.5">
-            <Clock class="w-4 h-4 text-origami-lavender-400 shrink-0 mt-0.5" />
+            <Clock class="w-4 h-4 text-origami-forest-400 shrink-0 mt-0.5" />
             <span>{siteConfig.contact.openingHours}</span>
           </div>
           
-          <p class="text-xs text-origami-slate-400 pt-2 border-t border-origami-slate-800">
+          <p class="text-xs text-origami-ink-400 pt-2 border-t border-origami-ink-900 font-mono">
             Retiros en taller y despachos coordinados para todo el país.
           </p>
         </div>
@@ -135,8 +131,8 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 
     <!-- Banner de Cumplimiento Legal y Privacidad (Opcional según siteConfig.legal) -->
     {siteConfig.legal?.enabled && (
-      <div class="mt-12 pt-6 border-t border-origami-slate-800 bg-origami-slate-900/60 rounded-2xl p-4 border border-origami-slate-800/80 flex flex-col sm:flex-row items-center gap-3 text-xs text-origami-slate-300">
-        <div class="w-8 h-8 rounded-xl bg-emerald-950 border border-emerald-800 text-emerald-400 flex items-center justify-center shrink-0">
+      <div class="mt-12 pt-6 border-t border-origami-ink-900 bg-origami-ink-900/60 p-4 border border-origami-ink-800 flex flex-col sm:flex-row items-center gap-3 text-xs text-origami-ink-300">
+        <div class="w-8 h-8 bg-origami-forest-900 border border-origami-forest-700 text-origami-forest-400 flex items-center justify-center shrink-0">
           <ShieldCheck class="w-4 h-4" />
         </div>
         <p class="leading-relaxed text-center sm:text-left">
@@ -146,11 +142,11 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
     )}
 
     <!-- Barra Inferior de Derechos -->
-    <div class="mt-6 pt-6 border-t border-origami-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-origami-slate-400">
+    <div class="mt-6 pt-6 border-t border-origami-ink-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-origami-ink-400 font-mono">
       <p>
         &copy; {currentYear} {siteConfig.brand.name}. Todos los derechos reservados.
       </p>
-      <p class="flex items-center gap-1 text-origami-slate-400">
+      <p class="flex items-center gap-1 text-origami-ink-400">
         {siteConfig.brand.name} · {siteConfig.brand.slogan}
       </p>
     </div>

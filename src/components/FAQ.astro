@@ -9,45 +9,45 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 <section
   id="faq"
   aria-labelledby="faq-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-white border-b border-origami-cream-200/80 relative"
+  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-sheet border-b border-origami-crease-line relative"
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Encabezado de Sección -->
     <div class="text-center max-w-3xl mx-auto mb-14">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-origami-rose-100 text-origami-rose-800 text-xs font-semibold uppercase tracking-wider mb-4">
-        <Sparkles class="w-3.5 h-3.5 text-origami-rose-600" />
+      <div class="fold-tag fold-tag-neutral mb-4">
+        <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
         <span>Respuestas Claras</span>
       </div>
       <h2
         id="faq-heading"
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-origami-slate-900 font-serif"
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-origami-ink-900 font-display"
       >
         Preguntas Frecuentes
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-origami-slate-600 leading-relaxed">
+      <p class="mt-4 text-base sm:text-lg text-origami-ink-600 leading-relaxed">
         Todo lo que necesitas saber sobre compras, personalización, tiempos y entregas antes de realizar tu pedido.
       </p>
     </div>
 
     <!-- Lista de Preguntas con Acordeón Exclusivo y Animación Fluida -->
-    <div class="space-y-4" id="faq-accordion-container">
+    <div class="space-y-3.5" id="faq-accordion-container">
       {faqData.map((faq, index) => (
         <div
-          class={`faq-item group bg-origami-cream-50 rounded-2xl border border-origami-cream-200 shadow-xs transition-all duration-300 overflow-hidden hover:border-origami-rose-300 ${index === 0 ? 'is-open' : ''}`}
+          class={`faq-item group paper-sheet transition-all duration-200 overflow-hidden hover:border-origami-terracotta-400 ${index === 0 ? 'is-open' : ''}`}
         >
           <button
             type="button"
             id={`faq-btn-${index}`}
             aria-expanded={index === 0 ? 'true' : 'false'}
             aria-controls={`faq-panel-${index}`}
-            class="faq-trigger w-full flex items-center justify-between p-6 cursor-pointer select-none text-left font-bold text-origami-slate-900 hover:text-origami-rose-700 transition-colors focus-visible:ring-2 focus-visible:ring-origami-lavender-700 rounded-2xl"
+            class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 cursor-pointer select-none text-left font-bold text-origami-ink-900 hover:text-origami-terracotta-700 transition-colors focus-visible:ring-2 focus-visible:ring-origami-terracotta-600"
           >
-            <span class="text-base sm:text-lg flex items-center gap-3 pr-4 font-serif">
-              <Info class="w-5 h-5 text-origami-rose-600 shrink-0" />
+            <span class="text-base sm:text-lg flex items-center gap-3 pr-4 font-display">
+              <Info class="w-5 h-5 text-origami-terracotta-600 shrink-0" />
               {faq.question}
             </span>
-            <ChevronDown class="faq-chevron w-5 h-5 text-origami-slate-400 shrink-0" />
+            <ChevronDown class="faq-chevron w-5 h-5 text-origami-ink-400 shrink-0 transition-transform duration-200" />
           </button>
           
           <div
@@ -57,7 +57,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
             class="faq-content-wrapper"
           >
             <div class="overflow-hidden">
-              <div class="px-6 pb-6 pt-2 text-sm sm:text-base text-origami-slate-600 leading-relaxed border-t border-origami-cream-200/80 bg-white/70">
+              <div class="px-6 pb-6 pt-3 text-sm sm:text-base text-origami-ink-600 leading-relaxed border-t border-origami-crease-line bg-origami-surface-warm/40">
                 {faq.answer}
               </div>
             </div>
@@ -67,12 +67,12 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
     </div>
 
     <!-- Banner de Dudas Adicionales -->
-    <div class="mt-12 p-6 sm:p-8 bg-origami-cream-100 rounded-3xl border border-origami-cream-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-paper">
+    <div class="mt-12 p-6 sm:p-8 bg-origami-surface-warm border border-origami-crease-line flex flex-col sm:flex-row items-center justify-between gap-6 shadow-paper-sheet">
       <div class="text-center sm:text-left">
-        <h3 class="text-base sm:text-lg font-bold text-origami-slate-900 font-serif">
+        <h3 class="text-base sm:text-lg font-bold text-origami-ink-900 font-display">
           ¿Tienes una pregunta diferente o un diseño especial?
         </h3>
-        <p class="text-xs sm:text-sm text-origami-slate-600 mt-1">
+        <p class="text-xs sm:text-sm text-origami-ink-600 mt-1">
           Escríbenos directamente por WhatsApp y te orientamos al instante de forma personalizada.
         </p>
       </div>
@@ -81,10 +81,10 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm transition-colors shadow-paper shrink-0"
+        class="inline-flex items-center gap-2 px-5 py-3 bg-origami-forest-700 hover:bg-origami-forest-800 text-white font-bold text-xs sm:text-sm transition-all shadow-paper-flat hover:shadow-paper-lift shrink-0 focus-visible:ring-2 focus-visible:ring-origami-forest-700"
       >
         <MessageCircle class="w-4 h-4" />
-        Escribir a WhatsApp
+        <span>Escribir a WhatsApp</span>
       </a>
     </div>
 

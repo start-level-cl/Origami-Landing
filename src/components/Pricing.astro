@@ -7,43 +7,43 @@ import { siteConfig } from '../config/site.config';
 <section
   id="precios"
   aria-labelledby="pricing-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-cream-50 border-b border-origami-cream-200/80 relative"
+  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Encabezado de Sección -->
     <div class="text-center max-w-3xl mx-auto">
-      <div class="origami-tag origami-tag-lavender mb-4">
-        <Sparkles class="w-3.5 h-3.5 text-origami-lavender-700" />
+      <div class="fold-tag fold-tag-neutral mb-4">
+        <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
         <span>Opciones & Presupuestos</span>
       </div>
       <h2
         id="pricing-heading"
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-origami-slate-900 font-serif"
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-origami-ink-900 font-display"
       >
         Alternativas diseñadas a tu medida
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-origami-slate-600 leading-relaxed">
+      <p class="mt-4 text-base sm:text-lg text-origami-ink-600 leading-relaxed">
         Ofrecemos opciones flexibles tanto para un regalo puntual como para pedidos por volumen o proyectos exclusivos.
       </p>
     </div>
 
-    <!-- Grid de Opciones de Precios con Capas de Papel -->
+    <!-- Grid de Opciones de Precios con Fichas de Papel -->
     <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {pricingData.map((plan) => {
         const planWhatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(`Hola Origami, me gustaría consultar por la opción "${plan.name}".`)}`;
         
         return (
           <div
-            class={`paper-card p-6 flex flex-col justify-between relative transition-all ${
+            class={`paper-sheet p-6 flex flex-col justify-between relative transition-all ${
               plan.isPopular
-                ? 'paper-stack border-2 border-origami-rose-400 bg-white ring-4 ring-origami-rose-100/70 -translate-y-1'
-                : 'paper-card-hover paper-fold-corner bg-white'
+                ? 'border-2 border-origami-terracotta-600 bg-origami-surface-sheet shadow-paper-lift -translate-y-1'
+                : 'paper-sheet-hover bg-origami-surface-sheet'
             }`}
           >
             
             {plan.isPopular && (
-              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-origami-rose-600 text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md flex items-center gap-1.5 border border-origami-rose-400 z-20">
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-origami-terracotta-600 text-white font-mono text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 shadow-paper-flat flex items-center gap-1.5 z-20">
                 <Heart class="w-3 h-3 fill-current" />
                 <span>{plan.badge || 'El más solicitado'}</span>
               </div>
@@ -51,29 +51,29 @@ import { siteConfig } from '../config/site.config';
 
             <div>
               {!plan.isPopular && plan.badge && (
-                <div class="origami-tag origami-tag-rose mb-3">
+                <div class="fold-tag fold-tag-neutral mb-3">
                   {plan.badge}
                 </div>
               )}
 
-              <h3 class="text-xl font-bold text-origami-slate-900 font-serif mt-1">
+              <h3 class="text-xl font-bold text-origami-ink-900 font-display mt-1">
                 {plan.name}
               </h3>
 
-              <div class="mt-2 text-xs font-bold text-origami-rose-800 bg-origami-rose-100/80 px-2.5 py-1.5 rounded-lg inline-block border border-origami-rose-200">
+              <div class="mt-2 text-xs font-mono font-bold text-origami-terracotta-800 bg-origami-terracotta-100 px-2.5 py-1.5 inline-block border border-origami-terracotta-300">
                 {plan.priceNote}
               </div>
 
-              <p class="mt-4 text-xs sm:text-sm text-origami-slate-600 leading-relaxed">
+              <p class="mt-4 text-xs sm:text-sm text-origami-ink-600 leading-relaxed">
                 {plan.description}
               </p>
 
               <!-- Lista de Características -->
-              <div class="mt-6 pt-4 border-t border-origami-cream-200">
+              <div class="mt-6 pt-4 border-t border-origami-crease-line">
                 <ul class="space-y-2.5">
                   {plan.features.map((feature) => (
-                    <li class="flex items-start gap-2 text-xs text-origami-slate-700">
-                      <div class="w-4 h-4 rounded-full bg-origami-lavender-100 text-origami-lavender-700 flex items-center justify-center shrink-0 mt-0.5 border border-origami-lavender-200">
+                    <li class="flex items-start gap-2 text-xs text-origami-ink-700">
+                      <div class="w-4 h-4 bg-origami-forest-100 text-origami-forest-800 flex items-center justify-center shrink-0 mt-0.5 border border-origami-forest-300">
                         <Check class="w-3 h-3" />
                       </div>
                       <span>{feature}</span>
@@ -84,19 +84,19 @@ import { siteConfig } from '../config/site.config';
             </div>
 
             <!-- Botón CTA -->
-            <div class="mt-8 pt-4 border-t border-origami-cream-200">
+            <div class="mt-8 pt-4 border-t border-origami-crease-line">
               <a
                 href={planWhatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class={`w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-xs ${
+                class={`w-full inline-flex items-center justify-center gap-2 py-3 px-4 text-xs sm:text-sm font-bold transition-all shadow-paper-flat ${
                   plan.isPopular
-                    ? 'bg-origami-slate-900 text-white hover:bg-origami-slate-800 shadow-paper'
-                    : 'bg-origami-cream-100 text-origami-slate-800 hover:bg-origami-rose-100 hover:text-origami-rose-800 border border-origami-cream-300'
+                    ? 'bg-origami-ink-900 text-white hover:bg-origami-ink-800 shadow-paper-lift'
+                    : 'bg-origami-surface-warm text-origami-ink-900 hover:bg-origami-surface-base border border-origami-crease-line'
                 }`}
               >
                 <MessageCircle class="w-4 h-4" />
-                {plan.ctaText}
+                <span>{plan.ctaText}</span>
               </a>
             </div>
 
@@ -105,8 +105,8 @@ import { siteConfig } from '../config/site.config';
       })}
     </div>
 
-    <!-- Nota Informativa con Estilo de Nota al Pie -->
-    <div class="mt-12 text-center text-xs text-origami-slate-600 max-w-2xl mx-auto bg-white/60 p-3.5 rounded-xl border border-origami-cream-200">
+    <!-- Nota Informativa con Estilo de Ficha Técnica -->
+    <div class="mt-12 text-center text-xs text-origami-ink-600 max-w-2xl mx-auto bg-origami-surface-sheet p-3.5 border border-origami-crease-line shadow-paper-flat">
       * Los medios de pago disponibles (transferencia electrónica, tarjetas y otros) y los plazos específicos de preparación se confirman directamente al coordinar tu pedido por WhatsApp según el volumen y la personalización requerida.
     </div>
 

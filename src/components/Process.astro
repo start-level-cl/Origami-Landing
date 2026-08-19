@@ -22,54 +22,54 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
 <section
   id="proceso"
   aria-labelledby="process-heading"
-  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-cream-50 border-b border-origami-cream-200/80 relative"
+  class="scroll-mt-16 sm:scroll-mt-20 py-20 sm:py-28 bg-origami-surface-base border-b border-origami-crease-line relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Encabezado de Sección -->
     <div class="text-center max-w-3xl mx-auto">
-      <div class="origami-tag origami-tag-lavender mb-4">
-        <Sparkles class="w-3.5 h-3.5 text-origami-lavender-700" />
+      <div class="fold-tag fold-tag-neutral mb-4">
+        <Sparkles class="w-3.5 h-3.5 text-origami-terracotta-600" />
         <span>Paso a Paso</span>
       </div>
       <h2
         id="process-heading"
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-origami-slate-900 font-serif"
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-origami-ink-900 font-display"
       >
         ¿Cómo realizar tu pedido en Origami?
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-origami-slate-600 leading-relaxed">
+      <p class="mt-4 text-base sm:text-lg text-origami-ink-600 leading-relaxed">
         Un proceso sencillo, transparente y personalizado para que recibas exactamente la creación que sueñas.
       </p>
     </div>
 
-    <!-- Grid de 4 Pasos con Estilo de Tarjetas de Papel Plegadas -->
+    <!-- Grid de 4 Pasos con Estilo de Fichas de Papel -->
     <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {processSteps.map((step) => {
         const IconComponent = getProcessIcon(step.iconName);
         return (
-          <div class="paper-card paper-card-hover paper-fold-corner p-6 flex flex-col justify-between group">
+          <div class="paper-sheet paper-sheet-hover p-6 flex flex-col justify-between group">
             
             <div>
               <div class="flex items-center justify-between mb-4">
-                <span class="text-3xl font-black font-serif text-origami-cream-400 group-hover:text-origami-rose-500 transition-colors">
+                <span class="text-3xl font-bold font-mono text-origami-ink-400 group-hover:text-origami-terracotta-600 transition-colors">
                   {step.number}
                 </span>
-                <div class="w-10 h-10 rounded-xl bg-origami-cream-100 border border-origami-cream-300 text-origami-rose-700 flex items-center justify-center shadow-xs">
+                <div class="w-10 h-10 bg-origami-surface-warm border border-origami-crease-line text-origami-terracotta-700 flex items-center justify-center shadow-xs">
                   <IconComponent class="w-5 h-5" />
                 </div>
               </div>
 
-              <h3 class="text-lg font-bold text-origami-slate-900 font-serif">
+              <h3 class="text-lg font-bold text-origami-ink-900 font-display">
                 {step.title}
               </h3>
 
-              <p class="mt-2 text-xs sm:text-sm text-origami-slate-600 leading-relaxed">
+              <p class="mt-2 text-xs sm:text-sm text-origami-ink-600 leading-relaxed">
                 {step.description}
               </p>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-origami-cream-200 text-xs font-bold text-origami-lavender-900 bg-origami-lavender-50/90 p-2.5 rounded-xl border border-origami-lavender-200">
+            <div class="mt-4 pt-3 border-t border-origami-crease-line text-xs font-mono font-bold text-origami-forest-800 bg-origami-forest-50 p-2.5 border border-origami-forest-200">
               ✓ {step.highlight}
             </div>
 
@@ -78,16 +78,16 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
       })}
     </div>
 
-    <!-- Banner de Atención Directa con Capas de Papel -->
-    <div class="mt-12 max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-paper border border-origami-cream-300 paper-fold-corner">
-      <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 border border-emerald-200">
+    <!-- Banner de Atención Directa -->
+    <div class="mt-12 max-w-4xl mx-auto bg-origami-surface-sheet p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-paper-sheet border border-origami-crease-line">
+      <div class="w-14 h-14 bg-origami-forest-100 text-origami-forest-800 flex items-center justify-center shrink-0 border border-origami-forest-300">
         <Clock class="w-7 h-7" />
       </div>
       <div class="flex-1 text-center sm:text-left">
-        <h4 class="text-base sm:text-lg font-bold text-origami-slate-900 font-serif">
+        <h4 class="text-base sm:text-lg font-bold text-origami-ink-900 font-display">
           Atención continua y asesoría personalizada
         </h4>
-        <p class="mt-1 text-xs sm:text-sm text-origami-slate-600">
+        <p class="mt-1 text-xs sm:text-sm text-origami-ink-600">
           Estamos disponibles <strong>{siteConfig.contact.openingHours}</strong> para responder preguntas, acordar fechas de entrega y coordinar despachos a todo Santiago y regiones.
         </p>
       </div>
@@ -95,10 +95,10 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${e
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold transition-colors shadow-paper shrink-0"
+        class="inline-flex items-center gap-2 px-5 py-3 bg-origami-forest-700 hover:bg-origami-forest-800 text-white text-xs sm:text-sm font-bold transition-all shadow-paper-flat hover:shadow-paper-lift shrink-0 focus-visible:ring-2 focus-visible:ring-origami-forest-700"
       >
         <MessageCircle class="w-4 h-4" />
-        Conversar por WhatsApp
+        <span>Conversar por WhatsApp</span>
       </a>
     </div>
 
