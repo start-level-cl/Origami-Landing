@@ -1,0 +1,28 @@
+# Node & Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.astro/
+
+# Environment files
+.env
+.env.production
+.env.development
+.env.local
+.env.*.local
+
+# IDE / OS files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs & scratch
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

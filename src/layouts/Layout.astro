@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+import { siteConfig } from '../config/site.config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = siteConfig.seo.defaultTitle,
+  description = siteConfig.seo.defaultDescription,
+  image = siteConfig.brand.ogImage,
+  canonicalURL = siteConfig.seo.siteUrl,
+} = Astro.props;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: siteConfig.brand.name,
+  description: siteConfig.brand.description,
+  url: siteConfig.seo.siteUrl,
+  logo: `${siteConfig.seo.siteUrl}${siteConfig.brand.logo}`,
+  image: `${siteConfig.seo.siteUrl}${image}`,
+  telephone: `+${siteConfig.contact.whatsappNumber}`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.contact.address,
+    addressLocality: siteConfig.contact.commune,
+    addressRegion: siteConfig.contact.city,
+    addressCountry: 'CL',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '08:00',
+      closes: '22:00',
+    },
+  ],
+  priceRange: '$$',
+};
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/avif" href="/favicon.avif" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo.avif" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content={siteConfig.seo.locale} />
+    <meta property="og:site_name" content={siteConfig.brand.name} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Datos Estructurados JSON-LD -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-origami-cream-50 text-origami-slate-800 antialiased font-sans">
+    <slot />
+  </body>
+</html>

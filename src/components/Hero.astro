@@ -1,0 +1,165 @@
+---
+import { Sparkles, MessageCircle, Heart, ShieldCheck, ArrowRight, Layers } from '@lucide/astro';
+import { siteConfig } from '../config/site.config';
+
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(siteConfig.contact.whatsappDefaultMessage)}`;
+---
+
+<section
+  id="inicio"
+  aria-labelledby="hero-heading"
+  class="relative overflow-hidden py-16 sm:py-24 lg:py-28 bg-gradient-to-b from-origami-cream-100 via-origami-cream-50 to-white border-b border-origami-cream-200/80"
+>
+  <!-- Textura de fondo sutil que evoca fibra de papel artesanal -->
+  <div class="absolute inset-0 bg-[radial-gradient(#dfccaf_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none"></div>
+
+  <!-- Manchas de luz suave en tonos pastel -->
+  <div class="absolute top-10 left-1/4 w-80 h-80 bg-origami-rose-200/35 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-origami-lavender-200/35 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Contenido Principal y CTAs -->
+      <div class="lg:col-span-7 flex flex-col items-start text-left">
+        
+        <!-- Badge de Eslogan con estilo etiqueta artesanal -->
+        <div class="origami-tag origami-tag-rose mb-6">
+          <Sparkles class="w-3.5 h-3.5 text-origami-rose-700 shrink-0" />
+          <span class="font-bold tracking-wide">{siteConfig.brand.name} · {siteConfig.brand.slogan}</span>
+        </div>
+
+        <!-- Único H1 de la One Page -->
+        <h1
+          id="hero-heading"
+          class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-origami-slate-900 leading-[1.14] font-serif"
+        >
+          Creaciones de papel <span class="text-origami-rose-600 relative inline-block">
+            hechas a mano
+            <svg class="absolute -bottom-1 left-0 w-full h-2 text-origami-rose-300 opacity-70" viewBox="0 0 100 10" preserveAspectRatio="none">
+              <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </span> para regalar, decorar y sorprender
+        </h1>
+
+        <p class="mt-6 text-lg sm:text-xl text-origami-slate-600 leading-relaxed max-w-2xl">
+          Descubre el encanto del origami tradicional y moderno. Cada pliegue está confeccionado con dedicación para crear figuras decorativas, sets de regalo memorables y pedidos personalizados para tus ocasiones especiales.
+        </p>
+
+        <!-- Botones de Acción -->
+        <div class="mt-8 flex flex-wrap gap-4 w-full sm:w-auto items-center">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-base font-bold text-white bg-emerald-700 hover:bg-emerald-600 rounded-2xl transition-all shadow-paper hover:shadow-paper-hover hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-emerald-700"
+          >
+            <MessageCircle class="w-5 h-5 shrink-0" />
+            Escribir por WhatsApp
+          </a>
+
+          <a
+            href="#contacto"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-bold text-origami-slate-800 bg-white hover:bg-origami-cream-100 border border-origami-cream-300 rounded-2xl transition-all shadow-paper hover:shadow-paper-hover hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-origami-lavender-700"
+          >
+            <span>Realizar Pedido</span>
+            <ArrowRight class="w-4 h-4 text-origami-rose-600" />
+          </a>
+        </div>
+
+        <!-- Diferenciales Rápidos en tarjetas tipo tira de papel -->
+        <div class="mt-10 pt-8 border-t border-origami-cream-200/90 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+          <div class="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-2.5 rounded-xl border border-origami-cream-200 shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-origami-rose-100 text-origami-rose-700 flex items-center justify-center shrink-0 border border-origami-rose-200">
+              <Heart class="w-4 h-4" />
+            </div>
+            <span class="text-xs sm:text-sm font-bold text-origami-slate-800">100% Hecho a Mano</span>
+          </div>
+
+          <div class="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-2.5 rounded-xl border border-origami-cream-200 shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-origami-lavender-100 text-origami-lavender-700 flex items-center justify-center shrink-0 border border-origami-lavender-200">
+              <Sparkles class="w-4 h-4" />
+            </div>
+            <span class="text-xs sm:text-sm font-bold text-origami-slate-800">Diseños a Medida</span>
+          </div>
+
+          <div class="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-2.5 rounded-xl border border-origami-cream-200 shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 border border-emerald-200">
+              <ShieldCheck class="w-4 h-4" />
+            </div>
+            <span class="text-xs sm:text-sm font-bold text-origami-slate-800">Empaque Protegido</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tarjeta Visual Destacada (Efecto Capas de Papel y Pliegue de Esquina 3D) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 paper-stack paper-fold-corner-lg border border-origami-cream-200 relative overflow-hidden">
+          
+          <!-- Elemento decorativo superior de pliegue y capas -->
+          <div class="flex items-center justify-between border-b border-origami-cream-200 pb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-origami-rose-300 border border-origami-rose-400"></span>
+              <span class="w-3 h-3 rounded-full bg-origami-lavender-300 border border-origami-lavender-400"></span>
+              <span class="w-3 h-3 rounded-full bg-origami-cream-300 border border-origami-cream-400"></span>
+            </div>
+            <span class="text-xs font-mono font-bold text-origami-slate-500 flex items-center gap-1">
+              <Layers class="w-3.5 h-3.5 text-origami-rose-600" />
+              Arte & Creaciones
+            </span>
+          </div>
+
+          <!-- Presentación de la Obra con Marco de Passe-Partout de Papel -->
+          <div class="mt-6 space-y-5">
+            <div class="relative w-full h-48 bg-gradient-to-br from-origami-rose-50 via-origami-cream-100 to-origami-lavender-50 rounded-2xl border-2 border-white shadow-inner flex items-center justify-center overflow-hidden p-4 ring-1 ring-origami-cream-200">
+              
+              <!-- Líneas decorativas de doblez de origami en fondo -->
+              <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 200 120">
+                <polygon points="0,0 100,60 0,120" fill="none" stroke="#B93E64" stroke-dasharray="3 3"/>
+                <polygon points="200,0 100,60 200,120" fill="none" stroke="#765FA8" stroke-dasharray="3 3"/>
+                <line x1="0" y1="0" x2="200" y2="120" stroke="#765FA8" stroke-width="0.5"/>
+                <line x1="0" y1="120" x2="200" y2="0" stroke="#B93E64" stroke-width="0.5"/>
+              </svg>
+
+              <img
+                src={siteConfig.brand.logo}
+                alt="Creación artesanal de Origami"
+                class="max-h-full max-w-full object-contain rounded-xl drop-shadow-md relative z-10"
+                loading="eager"
+              />
+            </div>
+
+            <div>
+              <div class="origami-tag origami-tag-rose">
+                🌸 Diseño Destacado
+              </div>
+              <h2 class="mt-2 text-2xl font-bold text-origami-slate-900 font-serif leading-snug">
+                Grulla Tradicional & Flores de Papel
+              </h2>
+              <p class="mt-2 text-xs sm:text-sm text-origami-slate-600 leading-relaxed">
+                Plegados con papel artesanal de alta textura. Disponibles en sets de regalo individuales o por encargo especial en tus tonos favoritos.
+              </p>
+            </div>
+
+            <div class="pt-3 border-t border-origami-cream-200 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] font-semibold text-origami-slate-500 block">Atención y Coordinación</span>
+                <span class="text-sm font-bold text-origami-slate-800">Directa por WhatsApp</span>
+              </div>
+              <a
+                href="#servicios"
+                class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-origami-lavender-900 bg-origami-lavender-100 hover:bg-origami-lavender-200 border border-origami-lavender-300 rounded-xl transition-colors shadow-xs"
+              >
+                Ver Catálogo
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

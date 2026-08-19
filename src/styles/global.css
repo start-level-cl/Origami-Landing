@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem; /* Compensación para header sticky en móvil (64px + 8px de respiro) */
+    color-scheme: light;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 5.5rem; /* Compensación para header sticky en sm/desktop (80px + 8px de respiro) */
+    }
+  }
+
+  body {
+    @apply antialiased text-origami-slate-800 bg-origami-cream-50 selection:bg-origami-rose-200 selection:text-origami-slate-900;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Mejora de accesibilidad para foco de navegación por teclado WCAG AA */
+  :focus-visible {
+    @apply outline-none ring-2 ring-origami-lavender-700 ring-offset-2 ring-offset-origami-cream-50;
+  }
+}
+
+@layer components {
+  /* Efecto de textura y tarjeta de papel */
+  .paper-card {
+    @apply bg-white border border-origami-cream-200 shadow-paper rounded-2xl transition-all duration-300 relative;
+  }
+
+  .paper-card-hover {
+    @apply hover:border-origami-rose-300 hover:shadow-paper-hover hover:-translate-y-1;
+  }
+
+  /* Efecto de pliegue tridimensional de esquina (Folded Corner 3D) */
+  .paper-fold-corner {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .paper-fold-corner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 26px 26px 0;
+    border-color: transparent #F3B6C8 transparent transparent;
+    box-shadow: -2px 2px 5px rgba(45, 38, 59, 0.14);
+    z-index: 10;
+    transition: border-width 0.25s ease;
+  }
+
+  .paper-fold-corner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 26px;
+    height: 26px;
+    background: linear-gradient(135deg, transparent 48%, rgba(45, 38, 59, 0.08) 52%);
+    pointer-events: none;
+    z-index: 9;
+  }
+
+  /* Pliegue de esquina grande para tarjetas hero / contacto */
+  .paper-fold-corner-lg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .paper-fold-corner-lg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 36px 36px 0;
+    border-color: transparent #ECA4B8 transparent transparent;
+    box-shadow: -3px 3px 8px rgba(45, 38, 59, 0.18);
+    z-index: 10;
+    transition: border-width 0.25s ease;
+  }
+
+  .paper-fold-corner-lg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, transparent 48%, rgba(45, 38, 59, 0.1) 52%);
+    pointer-events: none;
+    z-index: 9;
+  }
+
+  /* Efecto de capas de papel superpuestas (Paper Stack Illusion) */
+  .paper-stack {
+    box-shadow: 
+      0 2px 6px -1px rgba(45, 38, 59, 0.06),
+      4px 4px 0 0 #FCE7ED,
+      8px 8px 0 0 #EFEAF8,
+      0 16px 32px -8px rgba(45, 38, 59, 0.1);
+  }
+
+  .paper-stack-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .paper-stack-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 4px 10px -2px rgba(45, 38, 59, 0.08),
+      6px 6px 0 0 #F8CFDC,
+      12px 12px 0 0 #DED3F1,
+      0 20px 40px -10px rgba(45, 38, 59, 0.14);
+  }
+
+  /* Línea sutil que evoca el marcado y hendidura de pliegue */
+  .crease-line {
+    background-image: linear-gradient(90deg, transparent, rgba(184, 169, 217, 0.5), transparent);
+  }
+
+  .crease-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(243, 182, 200, 0.8) 30%, rgba(184, 169, 217, 0.8) 70%, transparent 100%);
+  }
+
+  /* Etiqueta artesanal tipo tag con borde punteado de costura/corte */
+  .origami-tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-lg border border-dashed shadow-sm;
+  }
+
+  .origami-tag-rose {
+    @apply bg-origami-rose-100/80 text-origami-rose-900 border-origami-rose-300;
+  }
+
+  .origami-tag-lavender {
+    @apply bg-origami-lavender-100/80 text-origami-lavender-900 border-origami-lavender-300;
+  }
+
+  /* Efecto de borde facetado de origami */
+  .origami-facet-border {
+    position: relative;
+  }
+
+  .origami-facet-border::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #F3B6C8 0%, #B8A9D9 50%, #FFF9F0 100%);
+  }
+}
+
+/* Animación fluida para acordeón FAQ */
+.faq-content-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms ease;
+}
+
+.faq-item.is-open .faq-content-wrapper {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-item.is-open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* Animación fluida para menú móvil y botón hamburguesa */
+.mobile-menu-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms ease;
+}
+
+.mobile-menu-wrapper.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* Transformación de botón hamburguesa a X */
+.menu-open .hamburger-line-1 {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-open .hamburger-line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-open .hamburger-line-3 {
+  transform: translateY(-7px) rotate(-45deg);
+}

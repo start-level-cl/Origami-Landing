@@ -1,0 +1,181 @@
+---
+import { MessageCircle, Sparkles } from '@lucide/astro';
+import { siteConfig } from '../config/site.config';
+
+const navItems = siteConfig.navigation.main;
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(siteConfig.contact.whatsappDefaultMessage)}`;
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-origami-cream-200/80 bg-origami-cream-50/90 backdrop-blur-md transition-all">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      
+      <!-- Logotipo e Identidad de Marca -->
+      <a href="#inicio" class="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-origami-lavender-700 rounded-xl p-1">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white shadow-paper border border-origami-cream-200 flex items-center justify-center p-1.5 overflow-hidden transition-transform group-hover:scale-105">
+          <img
+            src={siteConfig.brand.logo}
+            alt={`Logotipo ${siteConfig.brand.name}`}
+            class="w-full h-full object-contain rounded-lg"
+            loading="eager"
+            width="44"
+            height="44"
+          />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-origami-slate-900 leading-none font-serif">
+            {siteConfig.brand.name}
+          </span>
+          <span class="text-[10px] font-semibold tracking-wider text-origami-slate-500 uppercase mt-0.5">
+            {siteConfig.brand.slogan}
+          </span>
+        </div>
+      </a>
+
+      <!-- Navegación de Escritorio -->
+      <nav aria-label="Navegación principal" class="hidden xl:flex items-center gap-6">
+        <ul class="flex items-center gap-1 lg:gap-2">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-sm font-medium text-origami-slate-700 hover:text-origami-rose-600 hover:bg-origami-rose-50/80 transition-colors px-3 py-2 rounded-xl focus-visible:ring-2 focus-visible:ring-origami-lavender-700"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex items-center gap-3 pl-3 border-l border-origami-cream-200">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-emerald-700"
+          >
+            <MessageCircle class="w-4 h-4 text-emerald-600 shrink-0" />
+            WhatsApp
+          </a>
+
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold text-white bg-origami-slate-900 hover:bg-origami-slate-800 rounded-xl transition-all shadow-paper hover:shadow-paper-hover focus-visible:ring-2 focus-visible:ring-origami-lavender-700"
+          >
+            <Sparkles class="w-3.5 h-3.5 text-origami-rose-300" />
+            Hacer Pedido
+          </a>
+        </div>
+      </nav>
+
+      <!-- Botones de Acción Móvil -->
+      <div class="flex xl:hidden items-center gap-2">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-2 text-emerald-700 hover:bg-emerald-50 rounded-xl transition-colors"
+          aria-label="Escribir por WhatsApp a Origami"
+        >
+          <MessageCircle class="w-5 h-5" />
+        </a>
+
+        <!-- Botón Hamburguesa Animado a X -->
+        <button
+          type="button"
+          aria-label="Abrir menú de navegación"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          id="mobile-menu-button"
+          class="p-2.5 rounded-xl text-origami-slate-800 hover:text-origami-slate-950 hover:bg-origami-cream-200 focus-visible:ring-2 focus-visible:ring-origami-lavender-700 transition-colors"
+        >
+          <div class="w-5 h-4 relative flex flex-col justify-between items-center pointer-events-none" aria-hidden="true">
+            <span class="hamburger-line-1 w-5 h-0.5 bg-origami-slate-800 rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+            <span class="hamburger-line-2 w-5 h-0.5 bg-origami-slate-800 rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+            <span class="hamburger-line-3 w-5 h-0.5 bg-origami-slate-800 rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil con Animación CSS Grid Fluida -->
+    <div
+      id="mobile-menu"
+      class="mobile-menu-wrapper xl:hidden"
+    >
+      <div class="overflow-hidden">
+        <div class="py-4 border-t border-origami-cream-200/90 bg-origami-cream-50/95 backdrop-blur-md">
+          <ul class="flex flex-col gap-1">
+            {navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="mobile-nav-link block px-3 py-2.5 text-base font-medium text-origami-slate-700 hover:text-origami-rose-700 hover:bg-origami-rose-50 rounded-xl transition-colors"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-4 pt-4 border-t border-origami-cream-200 flex flex-col gap-2">
+            <a
+              href="#contacto"
+              class="mobile-nav-link block w-full text-center px-4 py-3 text-sm font-bold text-white bg-origami-slate-900 hover:bg-origami-slate-800 rounded-xl transition-colors shadow-paper"
+            >
+              Hacer un Pedido / Cotizar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuButton && mobileMenu) {
+    const toggleMenu = (forceState?: boolean) => {
+      const isCurrentlyOpen = mobileMenu.classList.contains('is-open');
+      const shouldOpen = forceState !== undefined ? forceState : !isCurrentlyOpen;
+
+      mobileMenu.classList.toggle('is-open', shouldOpen);
+      menuButton.classList.toggle('menu-open', shouldOpen);
+      menuButton.setAttribute('aria-expanded', shouldOpen.toString());
+      menuButton.setAttribute('aria-label', shouldOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+    };
+
+    menuButton.addEventListener('click', () => toggleMenu());
+
+    const mobileLinks = mobileMenu.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        toggleMenu(false);
+
+        if (href && href.startsWith('#') && href.length > 1) {
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            // Calcular posición precisa compensando el navbar sticky
+            const nav = document.querySelector('header');
+            const navHeight = nav ? nav.getBoundingClientRect().height : 64;
+            const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - navHeight - 8; // 8px de margen de respiro
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+
+            // Actualizar URL sin saltos bruscos
+            history.pushState(null, '', href);
+          }
+        }
+      });
+    });
+  }
+</script>

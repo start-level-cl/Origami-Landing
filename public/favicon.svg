@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Delicate Origami Crane Vector -->
+  <path d="M32 6L46 22L32 38L18 22L32 6Z" fill="#F3B6C8" stroke="#BE4668" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M32 38L48 54L32 46L16 54L32 38Z" fill="#B8A9D9" stroke="#765FA8" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M18 22L6 28L18 34L32 38L18 22Z" fill="#FCE7ED" stroke="#BE4668" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M46 22L58 28L46 34L32 38L46 22Z" fill="#EFEAF8" stroke="#765FA8" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M32 6V46" stroke="#942B4B" stroke-width="1.5" stroke-dasharray="2 2"/>
+</svg>
